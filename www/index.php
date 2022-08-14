@@ -1,6 +1,3 @@
 <?php
-
-echo "Hello, world!";
-
-phpinfo();
-xdebug_info();
+    echo "<h1>Hello, world!</h1>"
+?>
