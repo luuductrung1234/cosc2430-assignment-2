@@ -1,0 +1,129 @@
+/*import font Roboto */
+@import url('https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700,800,900&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    transition: 0.5s;
+}
+
+body {
+    height: 100%;
+    overflow-y: hidden;
+}
+
+header {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    transition: 0.5s;
+    align-items: center;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    padding: 20px 40px;
+    z-index: 9999;
+    background-color: darkgoldenrod;
+}
+
+header .return {
+    color: aliceblue;
+    font-weight: 700;
+    font-size: 2em;
+    text-decoration: none;
+}
+
+header .return:after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: rgb(255, 255, 255);
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+header .return:hover::after {
+    width: 100%;
+}
+
+header .return:hover {
+    color: rgb(255, 255, 255);
+}
+
+header .return span {
+    color: darkgoldenrod;
+}
+
+footer {
+    text-align: center;
+    padding: 3px;
+    background-color: rgb(233, 229, 229);
+}
+
+footer div {
+    color: black;
+    text-align: left !important;
+}
+
+footer div a {
+    color: black;
+    text-align: left !important;
+    text-decoration: none;
+}
+
+footer .navbar .navigation {
+    position: relative;
+    display: flex;
+    float: right;
+    margin-right: 65px;
+    bottom: 30px;
+
+}
+
+footer .navbar .navigation li {
+    list-style: none;
+    margin-left: 30px;
+}
+
+footer .navbar .navigation li a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+}
+
+footer .navbar .navigation li a::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: rgb(5, 155, 241);
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+footer .navbar .navigation li a:hover::after {
+    width: 100%;
+}
+
+footer .navbar .navigation li a:hover {
+    color: rgb(0, 0, 0);
+}
+
+@media screen and (max-width: 960px){
+    header .return {
+        font-size: 1.8em;
+    }
+    
+    footer div,
+    footer div a {
+        margin-top: 20px;
+    }
+    
+    footer .navbar .navigation {
+        display: none;
+    }
+}
