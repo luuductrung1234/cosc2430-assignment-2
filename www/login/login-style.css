@@ -3,47 +3,46 @@ body {
     background-color: rgba(0, 0, 0, 0.01);
 }
 
-.container{
-	position: relative;
-	width: 100%;
-        height: 1000px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
     margin: auto;
 
 }
 
-.LoginBx{
-	max-width: 950px;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	justify-content: center;
-	align-items: center;
-    margin: 160px auto;
-	text-align: center;
-	background-color: #fff;
-	box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
+.LoginBx {
+    max-width: 950px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    margin: 110px auto;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
 }
 
-.Lleft{
-	background: url(../images/logo.png) no-repeat center;
-	background-size: contain;
-	height: 100%;
+.Lleft {
+    background: url(../images/logo.png) no-repeat center;
+    background-size: contain;
+    height: 100%;
 }
 
-.Lright{
-	padding: 60px 50px;
+.Lright {
+    padding: 40px 30px;
 }
 
-h2{
-	position: relative;
-	padding: 0 0 10px;
-	margin-bottom: 10px;
+h2 {
+    position: relative;
+    padding: 0 0 10px;
+    margin-bottom: 10px;
 }
 
-h2:after{
-	content: '';
+h2:after {
+    content: '';
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -82,19 +81,19 @@ h2:after{
     float: left;
 }
 
-.field{
-	width: 100%;
-	border: 2px solid rgba(0, 0, 0, 0);
-	outline: none;
-	background-color: rgba(230, 230, 230, 0.6);
-	padding: 0.5rem 1rem;
-	font-size: 1.1rem;
-	margin-bottom: 5px;
-	transition: .3s;
+.field {
+    width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0);
+    outline: none;
+    background-color: rgba(230, 230, 230, 0.6);
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    transition: .3s;
 }
 
-.field:hover{
-	background-color: rgba(0, 0, 0, 0.1);
+.field:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 
@@ -168,19 +167,19 @@ h2:after{
     letter-spacing: 6px;
 }
 
-.inputBx input[type="reset"]:hover{
+.inputBx input[type="reset"]:hover {
     background-color: rgb(180, 131, 7);
 }
 
-.inputBx input[type="submit"]:hover{
+.inputBx input[type="submit"]:hover {
     background-color: rgb(180, 131, 7);
 }
 
-.signUp input[type="button"]:hover{
+.signUp input[type="button"]:hover {
     background-color: rgb(180, 131, 7);
 }
 
-.field:focus{
+.field:focus {
     border: 2px solid rgba(103, 15, 218, 0.47);
     background-color: #fff;
 }
@@ -188,10 +187,10 @@ h2:after{
 
 select {
     box-shadow: 0 10px 25 rgba(0, 0, 0, 0.1);
-    background-color: rgba(230, 230, 230, 0.6) ;
+    background-color: rgba(230, 230, 230, 0.6);
     border: none;
     font-size: 1.1rem;
-	padding: 0.6rem 1rem;
+    padding: 0.6rem 1rem;
     width: 100%;
     margin-bottom: 22px;
 }
@@ -217,7 +216,7 @@ select {
 
 .arrow::before,
 .arrow::after {
-    --size:0.60em;
+    --size: 0.60em;
 
     content: '';
     position: absolute;
@@ -233,7 +232,7 @@ select {
     border-left: var(--size) solid transparent;
     border-right: var(--size) solid transparent;
     border-bottom: var(--size) solid #c45077;
-    
+
     top: 35%;
 }
 
@@ -245,42 +244,42 @@ select {
     top: 64%;
 }
 
-select:focus{
+select:focus {
     border: 2px solid rgba(103, 15, 218, 0.47);
     background-color: #fff;
     outline: none;
 }
 
-@media screen and (max-width: 960px){
-	.LoginBx{
-		grid-template-columns: 1fr;
-	}
-    
-    .container {
-        height: 100% ;
+@media screen and (max-width: 960px) {
+    .LoginBx {
+        grid-template-columns: 1fr;
     }
-    
-	.Lleft{
-		display: none;
-	}
-    
+
+    .container {
+        height: 100%;
+    }
+
+    .Lleft {
+        display: none;
+    }
+
     .contactday {
         font-size: 12px;
     }
-    
+
     .contactday .top {
         text-align: left;
         margin-bottom: 10px;
     }
-    
+
     .contactday .bottom {
         text-align: left;
     }
-    
+
     .contactday .checkbox-inline {
         padding-right: 6px;
     }
-    
+
     .contactday input[type="checkbox"] {
         margin-right: 3px;
     }
