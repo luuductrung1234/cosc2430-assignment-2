@@ -12,6 +12,7 @@ services:
       - host.docker.internal:host-gateway
     volumes:
       - ../www:/var/www
+      - ../database:/var/database
 
   nginx:
     image: nginx:1.23

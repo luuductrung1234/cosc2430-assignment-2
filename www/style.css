@@ -15,7 +15,7 @@ body {
     overflow-y: hidden;
 }
 
-header {
+.header-nav {
     display: flex;
     position: fixed;
     justify-content: space-between;
@@ -24,19 +24,19 @@ header {
     top: 0px;
     left: 0px;
     width: 100%;
-    padding: 20px 40px;
+    padding: 15px 40px;
     z-index: 9999;
     background-color: darkgoldenrod;
 }
 
-header .return {
+.header-nav .return {
     color: aliceblue;
     font-weight: 700;
     font-size: 2em;
     text-decoration: none;
 }
 
-header .return:after {
+.header-nav .return:after {
     content: '';
     width: 0%;
     height: 2px;
@@ -46,15 +46,15 @@ header .return:after {
     transition: 0.5s;
 }
 
-header .return:hover::after {
+.header-nav .return:hover::after {
     width: 100%;
 }
 
-header .return:hover {
+.header-nav .return:hover {
     color: rgb(255, 255, 255);
 }
 
-header .return span {
+.header-nav .return span {
     color: darkgoldenrod;
 }
 
@@ -113,16 +113,22 @@ footer .navbar .navigation li a:hover {
     color: rgb(0, 0, 0);
 }
 
-@media screen and (max-width: 960px){
-    header .return {
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+@media screen and (max-width: 960px) {
+    .header-nav .return {
         font-size: 1.8em;
     }
-    
+
     footer div,
     footer div a {
         margin-top: 20px;
     }
-    
+
     footer .navbar .navigation {
         display: none;
     }
