@@ -8,12 +8,17 @@ $acc_len = count($json_account_list);
 $login_failed = false;
 
 
-if (isset($_POST["Uname"]) && isset($_POST["Pword"]) && !isset($_SESSION["User"])){
+if (isset($_POST["username"]) && isset($_POST["password"]) && !isset($_SESSION["User"])){
     for ($i=0; $i < $acc_len; $i++){
-        if ($json_account_list[$i]["username"] == $_POST["Uname"]){
-            $pw_hash = $json_account_list[$i]["password"];
-            if (password_verify($_POST["Pword"], $pw_hash)){
-                $_SESSION["User"] = $_POST["Uname"];
+        if ($json_account_list[$i]["username"] == $_POST["username"]){
+            $hashed_password = $json_account_list[$i]["password"];
+            if (password_verify($_POST["password"], $hashed_password)){
+                /// SESSION USER (username, role, profileId) ///
+                $_SESSION["User"] = array(
+                    "username"=>$_POST["username"],
+                    "role"=>$json_account_list[$i]["role"],
+                    "profileId"=>$json_account_list[$i]["profileId"]
+                );
                 break;
             }
         }
@@ -71,7 +76,7 @@ if (isset($_SESSION["User"])){
                     ?>
                     <div class="name">
                         <label for="Uname">Username</label>
-                        <input id="Uname" type="text" class="field" name="Uname" placeholder="Username" required>
+                        <input id="Uname" type="text" class="field" name="username" placeholder="Username" required>
                         <span><a href="#">forgot username?</a></span>
                     </div>
 
@@ -80,7 +85,7 @@ if (isset($_SESSION["User"])){
 
                     <div class="passW">
                         <label for="Pword">Password</label>
-                        <input id="Pword"  type="password" class="field" name="Pword" placeholder="Password" required>
+                        <input id="Pword"  type="password" class="field" name="password" placeholder="Password" required>
                         <span><a href="#">forgot password?</a></span>
                     </div>
 
