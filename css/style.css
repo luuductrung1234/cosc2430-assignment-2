@@ -1,0 +1,94 @@
+/* css link */
+@import url(./register.css);
+
+
+
+
+/* font */
+
+
+
+
+
+/* variables */
+:root{
+	--color-main: orange;
+	--color-sub: darkorange;
+	--color-text:black;
+	--color-lighter: #DC9C86;
+  --color-light-bd: #FFE6D6;
+  --color-light-bg: #FFF5ED;
+
+	--font-title: 44px;
+  --font-subtitle: 32px;
+  --font-tag: 26px;
+  --font-larger: 20px;
+  --font-text: 18px;
+
+}
+
+/* reset */
+
+body {
+  margin: 0;
+  font-family: "opensans";
+  min-height: 150vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: normal;
+  font-family: "ibarra";
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+strong, em {
+  font-weight: inherit;
+  font-style: normal;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+dl { margin: 0; }
+dd {
+  margin: 0;
+  display: inline;
+}
+
+figure { margin: 0; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+th { font-weight: normal; }
+button{
+  all:unset
+}
+
+
+
+
+
+
+/* screen reader only  */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
