@@ -1,5 +1,6 @@
 /* css link */
 @import url(./register.css);
+@import url(./registerVendor.css);
 
 
 
@@ -75,6 +76,26 @@ button{
   all:unset
 }
 
+
+/* button  */
+
+button{
+  padding:20px;
+  border: 1px solid var(--color-lighter);
+  border-radius: 2em;
+  background-color: var(--color-lighter);
+  color: white;
+  font-size: var(--font-larger);
+  cursor: pointer;
+  box-shadow: 3px 3px 3px #ddd;
+
+}
+button:hover{
+  transform: translateY(-5px);   
+  transition: all 0.4s;
+  box-shadow: 5px 5px 3px #ddd;
+
+}
 
 
 
