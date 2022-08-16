@@ -22,6 +22,7 @@
 
  
 }
+
 #register_container{
   box-shadow: 5px 5px 5px #ddd;;
 }
@@ -86,11 +87,12 @@
     
   }
   
-.register_col { 
+.register_col{ 
   width: calc(90%/3);
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 
@@ -102,6 +104,7 @@ height: calc(80%);
 }
 .register_col h4{
   padding: 20px;
+  text-align: center;
 }
 
 

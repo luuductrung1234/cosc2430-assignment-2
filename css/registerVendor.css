@@ -1,5 +1,8 @@
 .color_red{
   color: red;}
+.color_green{
+  color: green;
+}
 .register_form{
   font-size: var(--font-text);
 }
@@ -94,6 +97,10 @@
       margin-left: 50px;
     }
 
+    .register .register_alert{
+      grid-column: 1;
+      
+    }
   
 
    

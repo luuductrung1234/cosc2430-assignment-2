@@ -24,34 +24,39 @@
       </h3>
 
       <div id="register_row">
-        
-        <div class="register_col">
-          <img src="../img/vendor1.jpg" alt="vendor">
-          <h4>
-            vendor
-          </h4>
-        </div>
+
+        <a href="register.php?name=vendor" class="register_col">  
+          
+            <img src="../img/vendor1.jpg" alt="vendor">
+            <h4>
+              vendor
+            </h4>
+          
+        </a>
 
         
      
+        
+        <a href="register.php?name=customer" class="register_col"> 
+               
+            <img src="../img/customer1.jpg" alt="customer">
 
-        <div class="register_col">        
-      
-          <img src="../img/customer1.jpg" alt="customer">
- 
-          <h4>
-            customer
-          </h4>
-        </div>
+            <h4>
+              customer
+            </h4>
+    
+        </a>
 
-        <div class="register_col">     
+        
+        
 
-          <img src="../img/delivery.jpg" alt="delivery">
-
-          <h4>
-            shipper
-          </h4>
-        </div>
+        <a href="register.php?name=delivery" class="register_col">   
+        
+            <img src="../img/delivery.jpg" alt="delivery">
+            <h4>
+              shipper
+            </h4>     
+        </a>
 
       </div>
     </section>
@@ -63,7 +68,25 @@
           go back
         </button>
         <button class="register_button">
-          continue
+          <?php 
+          if(isset($_GET['name'])){
+            if($_GET['name']=='customer'){
+              echo '<a href="registerCustomer.php">
+                      continue
+                    </a>';
+            }elseif($_GET['name']=='vendor'){
+              echo '<a href="registerVendor.php">
+                      continue
+                    </a>';
+            }elseif($_GET['name']=='delivery'){
+              echo '<a href="registerDelivery.php">
+                      continue
+                    </a>';
+
+          }}else{
+            echo '<a href="register.php" onclick="registerAlert()">continue</a>';
+          }?>
+          
         </button>
     </div>
     
@@ -71,5 +94,6 @@
   <footer>
     <!-- footer -->
   </footer>
+  <script src="../javascript/register.js"></script>
 </body>
 </html>

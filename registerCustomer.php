@@ -69,29 +69,11 @@
             </div>
           </div>
 
-          <div class="register">
-            <div class="register_label">
-              business name 
-              <span class="color_red">*</span>
-            </div>
-            <div class="register_input">
-              <input type="text" name="business_name" id="business_name">
-            </div>
-            <div>
-              <button class="register_verify" onclick="verifyBusinessName()">
-                verify
-              </button>
-            </div>
-            <div class="register_alert" id="business_name_alert">
-      
-            </div>
-              
-          </div>
          
 
           <div class="register">
             <div class="register_label">
-              business address
+              address
               <span class="color_red">*</span>
             </div>
             <div class="register_input">

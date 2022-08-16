@@ -69,24 +69,6 @@
             </div>
           </div>
 
-          <div class="register">
-            <div class="register_label">
-              business name 
-              <span class="color_red">*</span>
-            </div>
-            <div class="register_input">
-              <input type="text" name="business_name" id="business_name">
-            </div>
-            <div>
-              <button class="register_verify" onclick="verifyBusinessName()">
-                verify
-              </button>
-            </div>
-            <div class="register_alert" id="business_name_alert">
-      
-            </div>
-              
-          </div>
          
 
           <div class="register">
@@ -118,6 +100,23 @@
             </div>
 
           </div>
+
+          <div class="register">
+            <div class="register_label">
+              distribution nub
+              <span class="color_red">*</span>
+            </div>
+            <div class="register_input">
+              <select name="register_distribution_hub" id="register_distribution_hub">
+                <option value="option1">option1</option>
+              </select>
+              
+            </div>
+            <div class="register_alert">
+            </div>
+
+          </div>
+
           
          
 
