@@ -79,7 +79,7 @@
                       continue
                     </a>'; 
             }elseif($_GET['name']=='delivery'){
-              echo '<a href="registerDelivery.php">
+              echo '<a href="registerShipper.php">
                       continue
                     </a>';
 
