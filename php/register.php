@@ -77,7 +77,7 @@
             }elseif($_GET['name']=='vendor'){
               echo '<a href="registerVendor.php">
                       continue
-                    </a>';
+                    </a>'; 
             }elseif($_GET['name']=='delivery'){
               echo '<a href="registerDelivery.php">
                       continue
