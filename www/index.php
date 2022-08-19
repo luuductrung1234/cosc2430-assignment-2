@@ -2,12 +2,18 @@
 session_start();
 
 if (isset($_POST["logout"])){
-    unset($_SESSION['User']);
+    session_unset();
 }  
+
 if (!isset($_SESSION["User"])){
     header("Location: ./login/login.php");
     exit();
 }
+
+if (isset($_POST["profile"])){
+    header("Location: ./profile/profile.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +31,9 @@ if (!isset($_SESSION["User"])){
     <form method="post">
         <input type="hidden" name="logout" value="1">
         <input type="submit" value="logout">
+    </form>
+    <form method="POST">
+    <input type="submit" name="profile" value="profile">
     </form>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
