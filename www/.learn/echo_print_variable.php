@@ -55,6 +55,7 @@ $$foo = "bar";
 
 echo "$foo, {$$foo}" . "<br/>";
 echo "$foo, ${$foo}" . "<br/>";
+echo "$foo, ${foo}" . "<br/>";
 
 ?>
 </body>
