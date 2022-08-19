@@ -3,49 +3,6 @@ body {
     overflow-y: hidden;
  }
 
-header {
-    display: flex;
-    position: fixed;
-    justify-content: space-between;
-    transition: 0.5s;
-    align-items: center;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    padding: 20px 40px;
-    z-index: 9999;
-    background-color: darkgoldenrod;
-}
-
-header .navigation {
-    color: aliceblue;
-    font-weight: 700;
-    font-size: 2em;
-    text-decoration: none;
-}
-
-header .navigation:after {
-    content: '';
-    width: 0%;
-    height: 2px;
-    background: rgb(255, 255, 255);
-    display: block;
-    margin: auto;
-    transition: 0.5s;
-}
-
-header .navigation:hover::after {
-    width: 100%;
-}
-
-header .navigation:hover {
-    color: rgb(255, 255, 255);
-}
-
-header .navigation span {
-    color: darkgoldenrod;
-}
-
 body {
     min-height: 1000px;
     background-color: rgba(0, 0, 0, 0.01);
