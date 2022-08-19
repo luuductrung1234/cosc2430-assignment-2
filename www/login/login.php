@@ -50,14 +50,6 @@ if (isset($_SESSION["User"])){
 </head>
 
 <body>
-<!--HEADER START-->
-<header class="clearfix">
-    <nav class="header-nav clearfix">
-        <!--need navigation item ideas-->
-        <a href="#" class="navigation" id="navigation">Navigation</a>
-    </nav>
-</header>
-<!--HEADER END-->
 
 <section>
     <!--Form START-->
