@@ -40,4 +40,6 @@ echo "<br/>";
 echo "<a href='file_system.php'>file system</a><br/>";
 echo "<br/>";
 echo "<a href='miniproject/index.php'>mini project</a><br/>";
+echo "<br/>";
+echo "<a href='basic_routing/index.php'>basic routing</a><br/>";
 ?>
