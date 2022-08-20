@@ -38,4 +38,6 @@ echo "<br/>";
 echo "<a href='error_handling.php'>error handling</a><br/>";
 echo "<br/>";
 echo "<a href='file_system.php'>file system</a><br/>";
+echo "<br/>";
+echo "<a href='miniproject/index.php'>mini project</a><br/>";
 ?>
