@@ -74,7 +74,7 @@ if($_GET['name']=='pic1'){
   <section class="product_info1">
     <div class="product_detail_img_display">
       <div class="mobile_only product_detail_arrows">
-        <img src="../img/arrow_back_ios_FILL0_wght400_GRAD0_opsz48.svg" alt="previous picture">
+        <img src="../img/arrow_back_ios_FILL0_wght400_GRAD0_opsz48.svg" alt="previous picture" onclick="changePicture()">
 
       </div>
       <div class="product_img">
