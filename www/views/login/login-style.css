@@ -1,0 +1,116 @@
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.login-box {
+    max-width: 950px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+}
+
+.login-box-left {
+    background: url(/../../images/logo.png) no-repeat center;
+    background-size: contain;
+    height: 100%;
+}
+
+.login-box-right {
+    padding: 40px 50px;
+}
+
+.login-box-title {
+    position: relative;
+    padding: 0 0 10px;
+    margin-bottom: 20px;
+}
+
+.login-box-title:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 4px;
+    width: 50px;
+    border-radius: 2px;
+    background-color: #e59400;
+}
+
+.login-input-group {
+    margin-bottom: 5px;
+}
+
+.login-input-label {
+    float: left;
+    margin-bottom: 10px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.login-input-hint {
+    margin-top: 0px;
+    float: right;
+}
+
+.login-input-field {
+    width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0);
+    outline: none;
+    background-color: rgba(230, 230, 230, 0.6);
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    transition: .3s;
+}
+
+.login-input-field:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.login-input-field:focus {
+    border: 2px solid rgba(103, 15, 218, 0.47);
+    background-color: #fff;
+}
+
+.remember-me {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-btn {
+    padding: 10px 40px;
+    font-size: 16px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    border-radius: 2px;
+}
+
+@media screen and (max-width: 960px) {
+    .login-box {
+        grid-template-columns: 1fr;
+        margin: 100px auto;
+        text-align: center;
+        background-color: #fff;
+        box-shadow: none;
+    }
+
+    .container {
+        height: 100%;
+    }
+
+    .login-box-left {
+        display: none;
+    }
+}

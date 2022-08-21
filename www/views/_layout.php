@@ -1,0 +1,98 @@
+<?php
+/**
+ * @var string $_title
+ * @var array $_styles
+ * @var string $_content
+ * @var array $_scripts
+ * @var bool $_show_header
+ * @var bool $_show_footer
+ * @var string $_avatar
+ */
+?>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $_title ?? "" ?></title>
+    <link rel="icon" type="image/x-icon" href="../images/logo-icon.ico">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <?php if (is_array($_styles) && !empty($_styles)): ?>
+        <?php foreach ($_styles as $style): ?>
+            <link rel="stylesheet" href="<?= $style ?>">
+        <?php endforeach; ?>
+    <?php endif; ?>
+</head>
+
+<body>
+<?php if ($_show_header): ?>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="../images/logo.png" alt="" width="30" height="30">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Lazada</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <div class="navbar-side">
+                        <a href="/logout" type="button" class="logout-btn">Logout</a>
+                        <a class="avatar-btn" href="/profile">
+                            <img class="avatar-img rounded-pill" src="<?= "../images/" . $_avatar ?>" alt="avatar">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+<?php endif; ?>
+<main class="main-content">
+    <?= $_content ?? "" ?>
+</main>
+<?php if ($_show_footer): ?>
+    <footer class="main-footer">
+        <div class="footer-body">
+            <img class="footer-logo" src="../images/footer-logo.png" alt="">
+            <p class="copyright">Copyright &copy; 2022 by Group 8.</p>
+        </div>
+        <nav class="footer-nav">
+            <ul class="footer-nav-items">
+                <li class="footer-nav-item"><a href="#">About Us</a></li>
+                <li class="footer-nav-item"><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <nav class="footer-nav">
+            <ul class="footer-nav-items">
+                <li class="footer-nav-item"><a href="#">Privacy Policy</a></li>
+                <li class="footer-nav-item"><a href="#">Terms</a></li>
+            </ul>
+        </nav>
+    </footer>
+<?php endif; ?>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+<?php if (is_array($_scripts) && !empty($_scripts)): ?>
+    <?php foreach ($_scripts as $script): ?>
+        <script rel="script" src="<?= $script ?>"></script>
+    <?php endforeach; ?>
+<?php endif; ?>
+</body>
+
+</html>
