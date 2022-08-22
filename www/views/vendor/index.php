@@ -35,7 +35,7 @@
                                     <div class="row pe-4 ps-4 text-dark">
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -47,7 +47,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -59,7 +59,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -86,7 +86,7 @@
                                     <div class="row pe-4 ps-4 text-dark">
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -98,7 +98,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -110,7 +110,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -122,7 +122,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -142,7 +142,7 @@
                                     <div class="row pe-4 ps-4 text-dark">
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -154,7 +154,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -166,7 +166,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -178,7 +178,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -193,7 +193,7 @@
                                     <div class="row pe-4 ps-4 text-dark">
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -205,7 +205,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -217,7 +217,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -229,7 +229,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -247,7 +247,7 @@
                                     <div class="row pe-4 ps-4 text-dark">
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -259,7 +259,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -271,7 +271,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -283,7 +283,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -298,7 +298,7 @@
                                     <div class="row pe-4 ps-4 text-dark">
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -310,7 +310,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -322,7 +322,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>
@@ -334,7 +334,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="card">
-                                                <img src="/www/images/imgblank.png" class="card-img-top" alt="...">
+                                                <img src="../../images/imgblank.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Item name</h5>
                                                     <p class="card-text">Description</p>

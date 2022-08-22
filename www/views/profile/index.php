@@ -2,11 +2,15 @@
 /**
  * @var array $profile
  * @var array $account
+ * @var bool $updateSuccess
  */
 ?>
 
 <?php if ($account["role"] != VENDOR_ROLE): ?>
     <form action="/profile" method="POST" enctype="multipart/form-data" class='container rounded bg-white mt-5 mb-5'>
+        <?php if($updateSuccess): ?>
+            <p class='alert alert-success'>update profile successfully.<p/>
+        <?php endif ?>
         <div class='row'>
             <div class='col-md-3 border-right'>
                 <div class='d-flex flex-column align-items-center text-center p-3 py-5 profile-div'>
@@ -72,6 +76,9 @@
     </form>
 <?php else: ?>
     <form action="/profile" method="POST" enctype="multipart/form-data" class='container rounded bg-white mt-5 mb-5'>
+        <?php if($updateSuccess): ?>
+            <p class='alert alert-success'>update profile successfully.<p/>
+        <?php endif ?>
         <div class='row'>
             <div class='col-md-3 border-right'>
                 <div class='d-flex flex-column align-items-center text-center p-3 py-5 profile-div'>

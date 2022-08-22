@@ -38,7 +38,7 @@
                         <input class="login-btn color-bg-primary" type="submit" value="login">
                     </div>
                     <div class="login-input-group">
-                        <input class="login-btn color-bg-muted" type="button" value="sign up">
+                        <a href="<?= REGISTER_URL ?>" class="login-btn color-bg-muted" type="button">sign up</a>
                     </div>
                 </div>
             </div>

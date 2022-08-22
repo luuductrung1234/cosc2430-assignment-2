@@ -30,8 +30,8 @@ class DataAccessService
         $profileData = json_encode($profiles);
         $_ = match ($role) {
             "customer" => file_put_contents(DATA_PATH . "customer.db", $profileData),
-            "vendor" => file_get_contents(DATA_PATH . "vendor.db", $profileData),
-            "shipper" => file_get_contents(DATA_PATH . "shipper.db", $profileData),
+            "vendor" => file_put_contents(DATA_PATH . "vendor.db", $profileData),
+            "shipper" => file_put_contents(DATA_PATH . "shipper.db", $profileData),
             default => throw new \OutOfRangeException("User's role is not supported"),
         };
     }

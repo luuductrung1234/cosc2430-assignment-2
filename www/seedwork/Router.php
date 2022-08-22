@@ -71,7 +71,7 @@ class Router
         }
         
         $action = null;
-        if ($route !== LOGIN_URL) {
+        if (!str_starts_with($route, LOGIN_URL) && !str_starts_with($route, REGISTER_URL)) {
             $account = AuthenticationService::getAccount();
             if (empty($account)) {
                 header("Location: " . LOGIN_URL);
