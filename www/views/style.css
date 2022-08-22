@@ -11,6 +11,10 @@ body {
     overflow-y: scroll;
 }
 
+a {
+    text-decoration: none;
+}
+
 a, button {
     cursor: pointer;
     outline: none;

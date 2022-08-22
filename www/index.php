@@ -52,8 +52,8 @@ $router
     ->get("/profile", [ProfileController::class, "index"])
     ->post("/profile", [ProfileController::class, "update"])
     ->get(LOGIN_URL, [LoginController::class, "index"])
-    ->get("/logout", [LoginController::class, "logout"])
     ->post(LOGIN_URL, [LoginController::class, "login"])
+    ->get("/logout", [LoginController::class, "logout"])
     ->get("/404", [ErrorController::class, "notfound"])
     ->get("/500", [ErrorController::class, "internalError"])
     ->allowForwardStaticFile();

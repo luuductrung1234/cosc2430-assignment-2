@@ -12,7 +12,7 @@ use Services\DataAccessService;
 
 class ProfileController
 {
-    public function index(): string
+    public function index(?bool $updateSuccess = null): string
     {
         $account = AuthenticationService::getAccount();
         $profile = DataAccessService::getProfile($account["profileId"], $account["role"]);
@@ -20,7 +20,8 @@ class ProfileController
             "_title" => "Profile",
             "_avatar" => $profile["picture"],
             "account" => $account,
-            "profile" => $profile
+            "profile" => $profile,
+            "updateSuccess" => $updateSuccess ?? false
         ];
         return (string)View::make("profile/index", $viewData);
     }
@@ -28,10 +29,33 @@ class ProfileController
     public function update(): string
     {
         $account = AuthenticationService::getAccount();
+        $profile = DataAccessService::getProfile($account["profileId"], $account["role"]);
+        $newFileName = $this->uploadPicture($account, $profile);
+        if (is_null($newFileName)) {
+            return $this->index(false);
+        }
+        
+        DataAccessService::updateProfile($account["profileId"], $account["role"], [
+            "picture" => $newFileName
+        ]);
+        return $this->index(true);
+    }
+
+    private function uploadPicture(array $account, array $profile): ?string
+    {
+        if (!isset($_FILES["picture"]) || empty($_FILES["picture"]["name"])) {
+            return null;
+        }
+        
+        if (is_file(IMAGE_PATH . $profile["picture"])) {
+            // delete old picture
+            unlink(IMAGE_PATH . $profile["picture"]);
+        }
+
+        // move new picture, from temporary php host directory to /images/ directory
         $extension = explode('.', $_FILES["picture"]["name"])[1];
         $fileName = $account["role"] . '-' . $account["profileId"] . '.' . $extension;
-        $filePath = IMAGE_PATH . $fileName;
-        move_uploaded_file($_FILES["picture"]["tmp_name"], $filePath);
-        return "";
+        move_uploaded_file($_FILES["picture"]["tmp_name"], IMAGE_PATH . $fileName);
+        return $fileName;
     }
 }
