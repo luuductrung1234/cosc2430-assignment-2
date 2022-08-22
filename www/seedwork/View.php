@@ -54,9 +54,13 @@ class View
     private function prepareLayoutData(string $viewPath, string $viewContent): void
     {
         $account = AuthenticationService::getAccount();
+        
         $viewDir = dirname($viewPath);
-        $viewDirNames = explode("/", $viewDir);
-        $cwdName = $viewDirNames[count($viewDirNames) - 1];
+        $dirParts = explode("/", $viewDir);
+        $cwdName = $dirParts[count($dirParts) - 1];
+        
+        $viewParts = explode("/", $this->view);
+        $viewName = $viewParts[count($viewParts) - 1];
 
         $this->layoutData["_title"] = "";
         $this->layoutData["_show_header"] = true;
@@ -68,6 +72,8 @@ class View
         $this->layoutData["_avatar"] = "default-img.png";
 
         foreach (scandir($viewDir) as $staticFileName) {
+            if(!str_contains($staticFileName, $viewName))
+                continue;
             if (str_contains($staticFileName, ".js")) {
                 $this->layoutData["_scripts"][] = STATIC_FILE_PATH . $cwdName . DIRECTORY_SEPARATOR . $staticFileName;
                 continue;

@@ -21,6 +21,7 @@ if (php_sapi_name() === "fpm-fcgi") {
 }
 
 const LOGIN_URL = "/login";
+const REGISTER_URL = "/register";
 
 const CUSTOMER_ROLE = "customer";
 const VENDOR_ROLE = "vendor";
@@ -32,6 +33,7 @@ require_once CONTROLLER_PATH . "CustomerController.php";
 require_once CONTROLLER_PATH . "VendorController.php";
 require_once CONTROLLER_PATH . "ShipperController.php";
 require_once CONTROLLER_PATH . "LoginController.php";
+require_once CONTROLLER_PATH . "RegisterController.php";
 require_once CONTROLLER_PATH . "ProfileController.php";
 require_once CONTROLLER_PATH . "ErrorController.php";
 
@@ -39,6 +41,7 @@ use Controllers\CustomerController;
 use Controllers\ErrorController;
 use Controllers\LoginController;
 use Controllers\ProfileController;
+use Controllers\RegisterController;
 use Controllers\ShipperController;
 use Controllers\VendorController;
 use SeedWork\Exceptions\RouteNotFoundException;
@@ -54,6 +57,9 @@ $router
     ->get(LOGIN_URL, [LoginController::class, "index"])
     ->post(LOGIN_URL, [LoginController::class, "login"])
     ->get("/logout", [LoginController::class, "logout"])
+    ->get(REGISTER_URL, [RegisterController::class, "index"])
+    ->get(REGISTER_URL . "-detail", [RegisterController::class, "detail"])
+    ->post(REGISTER_URL, [RegisterController::class, "register"])
     ->get("/404", [ErrorController::class, "notfound"])
     ->get("/500", [ErrorController::class, "internalError"])
     ->allowForwardStaticFile();

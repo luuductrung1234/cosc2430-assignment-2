@@ -1,0 +1,320 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* button  */
+button{
+    padding:20px;
+    border: 1px solid var(--color-lighter);
+    border-radius: 2em;
+    background-color: var(--color-lighter);
+    color: white;
+    font-size: var(--font-larger);
+    cursor: pointer;
+    box-shadow: 3px 3px 3px #ddd;
+}
+
+button:hover{
+    transform: translateY(-5px);
+    transition: all 0.4s;
+    box-shadow: 5px 5px 3px #ddd;
+}
+
+/* screen reader only  */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+#register_main h2 {
+    font-size: var(--font-title);
+    padding: 20px;
+}
+
+#register_container h3 {
+    font-size: var(--font-subtitle);
+    padding: 40px;
+}
+
+.color_red {
+    color: red;
+}
+
+.color_green {
+    color: green;
+}
+
+.register_form {
+    font-size: var(--font-text);
+}
+
+.register_verify {
+    border: 1px solid var(--color-lighter);
+    background-color: var(--color-lighter);
+    border-radius: 0;
+    padding: 5px;
+    color: white;
+    box-shadow: 3px 3px 3px #ddd;
+    cursor: pointer;
+    font: var(--font-text);
+}
+
+.register_verify:hover {
+    box-shadow: 5px 5px 5px #ddd;
+    font-weight: bold;
+    transition: all 0.1s;
+}
+
+.register_vendor_button {
+    padding: 10px;
+    border-radius: 1em;
+}
+
+@media (min-width: 1024px) {
+    #register_main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #register_container {
+        border: 1px solid var(--color-light-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 40px 0;
+        background-color: var(--color-light-bg);
+        width: calc(90%);
+    }
+
+    #register_row {
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 50px;
+    }
+
+    .register_col {
+        width: calc(90% / 3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .register_col img {
+        width: 100%;
+        height: calc(80%);
+    }
+
+    .register_col h4 {
+        padding: 20px;
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    #register_container h3 {
+        padding-bottom: 80px;
+    }
+
+    #register_main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+    }
+
+    #register_container {
+        border: 1px solid var(--color-light-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 50px;
+        margin: 40px 0;
+        background-color: var(--color-light-bg);
+        width: calc(80%);
+    }
+
+    #register_row {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        width: calc(70%);
+    }
+
+    .register_col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 450px;
+    }
+
+    .register_col img {
+        width: 100%;
+        height: calc(80%);
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    #register_container h3 {
+        padding-bottom: 80px;
+    }
+
+    #register_main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+    }
+
+    #register_container {
+        border: 1px solid var(--color-light-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 50px;
+        margin: 40px 0;
+        background-color: var(--color-light-bg);
+        width: calc(80%);
+    }
+
+    #register_row {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        width: calc(70%);
+    }
+
+    .register_col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 450px;
+    }
+
+    .register_col img {
+        width: 100%;
+        height: calc(80%);
+        padding-bottom: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #register_container {
+        width: calc(70%);
+    }
+
+    .register_form {
+        width: calc(80%);
+        padding: 40px 0px;
+        margin-left: -130px;
+    }
+
+    .register {
+        display: grid;
+        grid-template-columns: 4fr 4fr 2fr;
+        grid-template-rows: 1fr 1fr;
+        justify-items: start;
+    }
+
+    .register_alert {
+        grid-column: -3/-2;
+    }
+
+    #register_vendor_button {
+        display: grid;
+        grid-template-columns: 8fr 1fr 1fr;
+        justify-items: start;
+    }
+
+    #register_gobackbutton {
+        margin-left: 30px;
+    }
+
+    .register_label {
+        margin-left: 100px;
+    }
+
+    .register_input, .register_alert {
+        margin-left: 20px;
+    }
+
+    .register_input input, #register_distribution_hub {
+        width: 250px;
+        height: 25px;
+    }
+
+    #register_distribution_hub {
+        height: 35px;
+        width: 260px;
+    }
+
+    .register {
+        height: 100px;
+    }
+}
+
+@media (max-width: 1023px) {
+    #register_container #register_vendor_heading {
+        padding: 50px;
+    }
+
+    .register_form {
+        width: 70%;
+        margin-left: 150px;
+    }
+
+    .register {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .register_label {
+        grid-column: 1/-1;
+        padding-bottom: 15px;
+    }
+
+    #register_vendor_button {
+        display: grid;
+        grid-template-columns: 8fr 1fr 1fr;
+        justify-items: start;
+        margin-bottom: 50px;
+    }
+
+    .register_vendor_button {
+        margin: 0 10px
+    }
+
+    #register_continuebutton {
+        margin-right: 50px;
+    }
+
+    #register_gobackbutton {
+        margin-left: 50px;
+    }
+
+    .register .register_alert {
+        grid-column: 1;
+    }
+
+    .register_input input {
+        width: 200px;
+        height: 25px;
+    }
+
+    .register {
+        height: 100px;
+    }
+}
+
+  
