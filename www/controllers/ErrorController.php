@@ -19,4 +19,14 @@ class ErrorController
         ];
         return (string)View::make("error/404", $viewData);
     }
+    
+    public function internalError(): string
+    {
+        $viewData = [
+            "_title" => "500",
+            "_show_header" => false,
+            "_show_footer" => false
+        ];
+        return (string)View::make("error/500", $viewData);
+    }
 }

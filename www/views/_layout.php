@@ -6,6 +6,7 @@
  * @var array $_scripts
  * @var bool $_show_header
  * @var bool $_show_footer
+ * @var bool $_show_cart
  * @var string $_avatar
  */
 ?>
@@ -19,7 +20,7 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="<?= STATIC_FILE_PATH . "style.css" ?>">
     <?php if (is_array($_styles) && !empty($_styles)): ?>
         <?php foreach ($_styles as $style): ?>
             <link rel="stylesheet" href="<?= $style ?>">
@@ -33,7 +34,7 @@
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
-                    <img src="../images/logo.png" alt="" width="30" height="30">
+                    <img src="../images/logo-big.png" alt="" width="30">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent"
@@ -51,6 +52,11 @@
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                     <div class="navbar-side">
+                        <?php if ($_show_cart): ?>
+                            <a class="cart-btn" href="/cart">
+                                <img class="cart-img" src="../images/cart.png" alt="shopping cart"/>
+                            </a>
+                        <?php endif; ?>
                         <a href="/logout" type="button" class="logout-btn">Logout</a>
                         <a class="avatar-btn" href="/profile">
                             <img class="avatar-img rounded-pill" src="<?= "../images/" . $_avatar ?>" alt="avatar">

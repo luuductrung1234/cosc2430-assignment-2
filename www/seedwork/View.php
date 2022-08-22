@@ -3,8 +3,10 @@
 namespace SeedWork;
 
 require_once SEED_WORK_PATH . "exceptions/ViewNotFoundException.php";
+require_once SERVICE_PATH . "AuthenticationService.php";
 
 use SeedWork\Exceptions\ViewNotFoundException;
+use Services\AuthenticationService;
 
 class View
 {
@@ -51,6 +53,7 @@ class View
 
     private function prepareLayoutData(string $viewPath, string $viewContent): void
     {
+        $account = AuthenticationService::getAccount();
         $viewDir = dirname($viewPath);
         $viewDirNames = explode("/", $viewDir);
         $cwdName = $viewDirNames[count($viewDirNames) - 1];
@@ -58,6 +61,7 @@ class View
         $this->layoutData["_title"] = "";
         $this->layoutData["_show_header"] = true;
         $this->layoutData["_show_footer"] = true;
+        $this->layoutData["_show_cart"] = !empty($account) && $account["role"] === CUSTOMER_ROLE;
         $this->layoutData["_styles"] = [];
         $this->layoutData["_scripts"] = [];
         $this->layoutData["_content"] = $viewContent;
@@ -65,11 +69,11 @@ class View
 
         foreach (scandir($viewDir) as $staticFileName) {
             if (str_contains($staticFileName, ".js")) {
-                $this->layoutData["_scripts"][] = $cwdName . DIRECTORY_SEPARATOR . $staticFileName;
+                $this->layoutData["_scripts"][] = STATIC_FILE_PATH . $cwdName . DIRECTORY_SEPARATOR . $staticFileName;
                 continue;
             }
             if (str_contains($staticFileName, ".css")) {
-                $this->layoutData["_styles"][] = $cwdName . DIRECTORY_SEPARATOR . $staticFileName;
+                $this->layoutData["_styles"][] = STATIC_FILE_PATH . $cwdName . DIRECTORY_SEPARATOR . $staticFileName;
             }
         }
 
