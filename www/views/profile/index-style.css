@@ -2,6 +2,19 @@ body {
     background: rgb(255, 255, 255)
 }
 
+.profile-logout-btn {
+    border-radius: 10px;
+    padding: 7px;
+}
+
+.profile-logout-btn:hover {
+    background-color: #eee;
+}
+
+.profile-logout-icon{
+    width: 27px;
+}
+
 .form-control:focus {
     box-shadow: none;
     border-color: #000000

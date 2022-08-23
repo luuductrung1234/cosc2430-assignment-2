@@ -49,12 +49,12 @@
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <button class="btn btn-outline-secondary btn-sm" type="submit"><img class="search-icon" src="../images/search-icon.png" alt="search icon"></button>
                     </form>
                     <div class="navbar-side">
                         <?php if ($_show_cart): ?>
                             <a class="cart-btn" href="/cart">
-                                <img class="cart-img" src="../images/cart.png" alt="shopping cart"/>
+                                <img class="cart-img" src="../images/cart-icon.png" alt="shopping cart"/>
                             </a>
                         <?php endif; ?>
                         <a href="/logout" type="button" class="logout-btn">Logout</a>

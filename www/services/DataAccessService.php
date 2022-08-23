@@ -8,32 +8,40 @@ class DataAccessService
 {
     public static function getAccount(string $username, string $password): ?array
     {
-        $accountData = file_get_contents(DATA_PATH . "account.db");
-        $accounts = (array)json_decode($accountData, true);
+        $accounts = self::loadAccounts();
         $account = array_values(array_filter($accounts, fn($a) => $a["username"] == $username && password_verify($password, $a["password"])));
         return empty($account) ? null : $account[0];
     }
 
-    public static function loadProfiles(string $role): array
+    public static function getProducts(?int $vendorId = null, ?string $name = null): ?array
     {
-        $profileData = match ($role) {
-            "customer" => file_get_contents(DATA_PATH . "customer.db"),
-            "vendor" => file_get_contents(DATA_PATH . "vendor.db"),
-            "shipper" => file_get_contents(DATA_PATH . "shipper.db"),
-            default => throw new \OutOfRangeException("User's role is not supported"),
-        };
-        return (array)json_decode($profileData, true);
+        $products = self::loadProducts();
+        if (!is_null($vendorId))
+            $products = array_values(array_filter($products, fn($a) => $a["vendorId"] == $vendorId));
+        if (!is_null($name))
+            $products = array_values(array_filter($products, fn($a) => $a["name"] == $name));
+        return $products;
+    }
+    
+    public static function getProduct(int $id): ?array
+    {
+        $products = self::loadProducts();
+        $product = array_values(array_filter($products, fn($p) => $p["id"] == $id));
+        return empty($product) ? null : $product[0];
     }
 
-    public static function saveProfiles(string $role, array $profiles): void
+    public static function addProduct(array $product): ?array
     {
-        $profileData = json_encode($profiles);
-        $_ = match ($role) {
-            "customer" => file_put_contents(DATA_PATH . "customer.db", $profileData),
-            "vendor" => file_put_contents(DATA_PATH . "vendor.db", $profileData),
-            "shipper" => file_put_contents(DATA_PATH . "shipper.db", $profileData),
-            default => throw new \OutOfRangeException("User's role is not supported"),
-        };
+        $products = self::loadProducts();
+        $products[] = [
+            "id" => count($products),
+            "price" => $product["price"],
+            "picture" => $product["picture"],
+            "description" => $product["description"],
+            "vendorId" => $product["vendorId"],
+        ];
+        self::saveProducts($products);
+        return $products;
     }
 
     public static function getProfile(int $profileId, string $role): ?array
@@ -48,7 +56,7 @@ class DataAccessService
         $profiles = self::loadProfiles($role);
         foreach ($profiles as &$profileToUpdate) {
             if ($profileToUpdate["id"] === $profileId) {
-                foreach ($data as $fieldName => $fieldValue){
+                foreach ($data as $fieldName => $fieldValue) {
                     $profileToUpdate[$fieldName] = $fieldValue;
                 }
                 self::saveProfiles($role, $profiles);
@@ -56,5 +64,55 @@ class DataAccessService
             }
         }
         return null;
+    }
+
+    // =========================================================
+    // PRIVATE HELPERS
+    // =========================================================
+
+    private static function loadAccounts(): array
+    {
+        $accountData = file_get_contents(DATA_PATH . "account.db");
+        return (array)json_decode($accountData, true);
+    }
+    
+    private static function saveAccounts(array $accounts): void
+    {
+        $accountData = json_encode($accounts);
+        file_put_contents(DATA_PATH . "account.db", $accountData);
+    }
+
+    private static function loadProfiles(string $role): array
+    {
+        $profileData = match ($role) {
+            "customer" => file_get_contents(DATA_PATH . "customer.db"),
+            "vendor" => file_get_contents(DATA_PATH . "vendor.db"),
+            "shipper" => file_get_contents(DATA_PATH . "shipper.db"),
+            default => throw new \OutOfRangeException("User's role is not supported"),
+        };
+        return (array)json_decode($profileData, true);
+    }
+
+    private static function saveProfiles(string $role, array $profiles): void
+    {
+        $profileData = json_encode($profiles);
+        $_ = match ($role) {
+            "customer" => file_put_contents(DATA_PATH . "customer.db", $profileData),
+            "vendor" => file_put_contents(DATA_PATH . "vendor.db", $profileData),
+            "shipper" => file_put_contents(DATA_PATH . "shipper.db", $profileData),
+            default => throw new \OutOfRangeException("User's role is not supported"),
+        };
+    }
+
+    private static function loadProducts(): array
+    {
+        $productData = file_get_contents(DATA_PATH . "product.db");
+        return (array)json_decode($productData, true);
+    }
+
+    private static function saveProducts(array $products): void
+    {
+        $productData = json_encode($products);
+        file_put_contents(DATA_PATH . "product.db", $productData);
     }
 }
