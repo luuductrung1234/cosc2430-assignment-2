@@ -6,12 +6,20 @@ namespace Services;
 
 class DataAccessService
 {
+    // =========================================================
+    // ACCOUNT
+    // =========================================================
+
     public static function getAccount(string $username, string $password): ?array
     {
         $accounts = self::loadAccounts();
         $account = array_values(array_filter($accounts, fn($a) => $a["username"] == $username && password_verify($password, $a["password"])));
         return empty($account) ? null : $account[0];
     }
+
+    // =========================================================
+    // PRODUCT
+    // =========================================================
 
     public static function getProducts(?int $vendorId = null, ?string $name = null): ?array
     {
@@ -44,7 +52,7 @@ class DataAccessService
         );
         $orderedProductIds = array_map(fn($item) => $item["productId"], $orderItems);
         $products = self::loadProducts();
-        if(!empty($orderItems))
+        if (!empty($orderItems))
             $products = array_values(array_filter($products, fn($a) => in_array($a["id"], $orderedProductIds)));
         if (!is_null($vendorId))
             $products = array_values(array_filter($products, fn($a) => $a["vendorId"] == $vendorId));
@@ -58,13 +66,15 @@ class DataAccessService
         $products = self::loadProducts();
         $product = array_values(array_filter($products, fn($p) => $p["id"] == $id));
         $product = empty($product) ? null : $product[0];
+        if (is_null($product)) return null;
+       
         $vendor = self::getProfile($product["vendorId"], VENDOR_ROLE);
         $product["vendorName"] = $vendor["businessName"];
         $product["vendorAddress"] = $vendor["businessAddress"];
         $product["vendorPhone"] = $vendor["phone"];
         return $product;
     }
-    
+
     public static function getNextProductId(): int
     {
         $products = self::loadProducts();
@@ -73,8 +83,10 @@ class DataAccessService
 
     public static function addProduct(array $product): ?array
     {
+        $products = self::loadProducts();
         $products[] = [
             "id" => $product["id"],
+            "name" => $product["name"],
             "price" => $product["price"],
             "pictures" => $product["pictures"],
             "description" => $product["description"],
@@ -83,6 +95,29 @@ class DataAccessService
         self::saveProducts($products);
         return $products;
     }
+
+    public static function addOrUpdateProfile(int $productId, array $data): ?array
+    {
+        $products = self::loadProducts();
+        foreach ($products as &$productToUpdate) {
+            if ($productToUpdate["id"] === $productId) {
+                foreach ($data as $fieldName => $fieldValue) {
+                    if ((is_string($fieldValue) || is_array($fieldValue)) && empty($fieldValue))
+                        continue;
+                    if (is_numeric($fieldValue) && $fieldValue < 0)
+                        continue;
+                    $productToUpdate[$fieldName] = $fieldValue;
+                }
+                self::saveProducts($products);
+                return $productToUpdate;
+            }
+        }
+        return self::addProduct($data);
+    }
+
+    // =========================================================
+    // PROFILE
+    // =========================================================
 
     public static function getProfile(int $profileId, string $role): ?array
     {

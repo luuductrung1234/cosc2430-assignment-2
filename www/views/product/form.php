@@ -33,7 +33,7 @@
                     </div>
                     <div class='col-md-4'>
                         <label class='info-label'>Price</label>
-                        <input type='number' name="name" step="0.01" class='form-control'
+                        <input type='number' name="price" step="0.01" class='form-control'
                                value='<?= !empty($product) ? $product["price"] : 0.0 ?>'>
                     </div>
                 </div>

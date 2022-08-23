@@ -17,13 +17,13 @@
         <div class='col-md-4 border-right'>
             <div class='d-flex flex-column align-items-center text-center p-3 py-5 profile-div'>
                 <div>
-                    <img src="<?= "../../images/" . $product["pictures"][0] ?>" class="img-fluid product-main-img"
+                    <img id="main-img" src="<?= "../../images/" . $product["pictures"][0] ?>" class="img-fluid product-main-img"
                          alt="...">
                 </div>
                 <div>
-                    <img src="<?= "../../images/" . $product["pictures"][0] ?>" class=" product-sub-img" alt="...">
-                    <img src="<?= "../../images/" . $product["pictures"][0] ?>" class=" product-sub-img" alt="...">
-                    <img src="<?= "../../images/" . $product["pictures"][0] ?>" class=" product-sub-img" alt="...">
+                    <?php foreach ($product["pictures"] as $picture): ?>
+                        <img onclick="onSelectPicture('<?= "../../images/". $picture ?>')" src="<?= "../../images/" . $picture ?>" class="product-sub-img" alt="...">
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

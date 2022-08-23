@@ -21,6 +21,10 @@ class ProductController
         $account = AuthenticationService::getAccount();
         $profile = DataAccessService::getProfile($account["profileId"], $account["role"]);
         $product = DataAccessService::getProduct((int)$_GET["id"] ?? $productId);
+        if (!$product) {
+            header("Location: /404");
+            exit();
+        }
         $viewData = [
             "_title" => "Product",
             "_avatar" => $profile["picture"],
@@ -48,24 +52,21 @@ class ProductController
 
     public function submit(): string
     {
-        echo "<pre>";
-        print_r($_POST);
-        echo "</pre>";
-        echo "<pre>";
-        print_r($_FILES);
-        echo "</pre>";
-
         $account = AuthenticationService::getAccount();
         $profile = DataAccessService::getProfile($account["profileId"], $account["role"]);
-        $productId = $_POST["id"] === 0 ? DataAccessService::getNextProductId() : $_POST["id"];
+
+        $productId = ((int)$_POST["id"] === 0 ? DataAccessService::getNextProductId() : (int)$_POST["id"]);
         $product = [
             "id" => $productId,
             "name" => $_POST["name"],
+            "price" => $_POST["price"],
             "description" => $_POST["description"],
             "pictures" => [],
             "vendorId" => $profile["id"]
         ];
-        return "";
+        $product["pictures"] = $this->uploadPictures($product);
+        DataAccessService::addOrUpdateProfile($productId, $product);
+        return $this->detail($productId);
     }
 
     private function uploadPictures(array $product): ?array
@@ -80,7 +81,7 @@ class ProductController
                 unlink(IMAGE_PATH . $picture);
             }
         }
-        
+
         $fileNames = [];
 
         // move new picture, from temporary php host directory to /images/ directory
