@@ -22,21 +22,61 @@ class DataAccessService
             $products = array_values(array_filter($products, fn($a) => $a["name"] == $name));
         return $products;
     }
-    
+
+    public static function getTopOrderedProducts(?int $vendorId = null, ?string $name = null): ?array
+    {
+        $orders = self::loadOrders();
+        $orderItemLists = array_map(fn($order) => $order["items"], $orders);
+        $orderItems = array_reduce($orderItemLists, fn($mergedItems, $orderItemList) => array_merge($mergedItems, $orderItemList), []);
+        $orderItems = array_reduce(
+            $orderItems,
+            function ($groupedItems, $orderItem) {
+                foreach ($groupedItems as &$existedItem) {
+                    if ($existedItem["productId"] === $orderItem["productId"]) {
+                        $existedItem["quantity"] += $orderItem["quantity"];
+                        return $groupedItems;
+                    }
+                }
+                $groupedItems[] = $orderItem;
+                return $groupedItems;
+            },
+            []
+        );
+        $orderedProductIds = array_map(fn($item) => $item["productId"], $orderItems);
+        $products = self::loadProducts();
+        if(!empty($orderItems))
+            $products = array_values(array_filter($products, fn($a) => in_array($a["id"], $orderedProductIds)));
+        if (!is_null($vendorId))
+            $products = array_values(array_filter($products, fn($a) => $a["vendorId"] == $vendorId));
+        if (!is_null($name))
+            $products = array_values(array_filter($products, fn($a) => $a["name"] == $name));
+        return $products;
+    }
+
     public static function getProduct(int $id): ?array
     {
         $products = self::loadProducts();
         $product = array_values(array_filter($products, fn($p) => $p["id"] == $id));
-        return empty($product) ? null : $product[0];
+        $product = empty($product) ? null : $product[0];
+        $vendor = self::getProfile($product["vendorId"], VENDOR_ROLE);
+        $product["vendorName"] = $vendor["businessName"];
+        $product["vendorAddress"] = $vendor["businessAddress"];
+        $product["vendorPhone"] = $vendor["phone"];
+        return $product;
+    }
+    
+    public static function getNextProductId(): int
+    {
+        $products = self::loadProducts();
+        return count($products) + 1;
     }
 
     public static function addProduct(array $product): ?array
     {
-        $products = self::loadProducts();
         $products[] = [
-            "id" => count($products),
+            "id" => $product["id"],
             "price" => $product["price"],
-            "picture" => $product["picture"],
+            "pictures" => $product["pictures"],
             "description" => $product["description"],
             "vendorId" => $product["vendorId"],
         ];
@@ -75,7 +115,7 @@ class DataAccessService
         $accountData = file_get_contents(DATA_PATH . "account.db");
         return (array)json_decode($accountData, true);
     }
-    
+
     private static function saveAccounts(array $accounts): void
     {
         $accountData = json_encode($accounts);
@@ -114,5 +154,17 @@ class DataAccessService
     {
         $productData = json_encode($products);
         file_put_contents(DATA_PATH . "product.db", $productData);
+    }
+
+    private static function loadOrders(): array
+    {
+        $orderData = file_get_contents(DATA_PATH . "order.db");
+        return (array)json_decode($orderData, true);
+    }
+
+    private static function saveOrders(array $orders): void
+    {
+        $orderData = json_encode($orders);
+        file_put_contents(DATA_PATH . "order.db", $orderData);
     }
 }

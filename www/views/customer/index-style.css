@@ -1,3 +1,44 @@
-.customer-header {
-    color: red;
+/* CARD */
+
+.card-body {
+    position: relative;
+}
+
+.card-title {
+    font-size: 16px;
+}
+
+.card-title-link {
+    color: #212529;
+    text-decoration: none;
+}
+
+.card-title-link:hover,
+.card-title-link:active {
+    color: #e59400;
+}
+
+.text-muted {
+    font-size: 12px;
+}
+
+.add-cart-btn {
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    border: none;
+    background-color: #fff;
+}
+
+.add-cart-icon {
+    width: 20px;
+}
+
+.card-price {
+    color: #e59400;
+    cursor: pointer;
+}
+
+.card-price:hover {
+    text-decoration: underline;
 }

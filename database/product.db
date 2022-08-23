@@ -1,8 +1,8 @@
 [
-{"id":1,"name":"Clear Men Shampoo","price":10.5,"picture":"product-1.png","description":"the best shampoo in the world, import from Thailand.","vendorId":1},
-{"id":2,"name":"SoundMax A130/2.0","price":20.99,"picture":"product-2.png","description":"good speaker for a small room, with new design","vendorId":1},
-{"id":3,"name":"T-Shirt Urban Outfits ATO137","price":5.75,"picture":"product-3.png","description":"young outfit for both boy and girl","vendorId":1},
-{"id":4,"name":"Iphone 13 mini","price":2199,"picture":"product-4.png","description":"4K@24/30/60fps, 1080p@30/60/120/240fps, HDR, Dolby Vision HDR (up to 60fps), stereo sound rec","vendorId":1},
-{"id":5,"name":"Cleaner iRobot Roomba J7","price":569,"picture":"product-5.png","description":"Robot Vacuum uses iRobot OS Technology and PrecisionVision Navigation","vendorId":1},
-{"id":6,"name":"Android Hoco Hub","price":5.89,"picture":"product-6.png","description":"6-in-1 (4K 60Hz) HDMI 4K 60Hz, SD, Micro-SD, USB-A, USB-C, jack 3.5 Audio","vendorId":1}
+{"id":1,"name":"Clear Men Shampoo","price":10.5,"pictures":["product-1-0.png"],"description":"the best shampoo in the world, import from Thailand.","vendorId":1},
+{"id":2,"name":"SoundMax A130/2.0","price":20.99,"pictures":["product-2-0.png"],"description":"good speaker for a small room, with new design","vendorId":1},
+{"id":3,"name":"T-Shirt Urban Outfits ATO137","price":5.75,"pictures":["product-3-0.png"],"description":"young outfit for both boy and girl","vendorId":1},
+{"id":4,"name":"Iphone 13 mini","price":2199,"pictures":["product-4-0.png"],"description":"4K@24/30/60fps, 1080p@30/60/120/240fps, HDR, Dolby Vision HDR (up to 60fps), stereo sound rec","vendorId":1},
+{"id":5,"name":"Cleaner iRobot Roomba J7","price":569,"pictures":["product-5-0.png"],"description":"Robot Vacuum uses iRobot OS Technology and PrecisionVision Navigation","vendorId":1},
+{"id":6,"name":"Android Hoco Hub","price":5.89,"pictures":["product-6-0.png"],"description":"6-in-1 (4K 60Hz) HDMI 4K 60Hz, SD, Micro-SD, USB-A, USB-C, jack 3.5 Audio","vendorId":1}
 ]

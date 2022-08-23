@@ -1,0 +1,15 @@
+/* BUTTON */
+
+.product-btn {
+    border: 1px solid #212529;
+    padding: 5px 50px;
+}
+
+.product-btn:hover {
+    border: 1px solid #e59400;
+    background-color: #e59400;
+}
+
+.product-btn-img {
+    width: 30px;
+}

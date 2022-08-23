@@ -16,10 +16,14 @@ class CustomerController
     {
         $account = AuthenticationService::getAccount();
         $profile = DataAccessService::getProfile($account["profileId"], $account["role"]);
+        $products = DataAccessService::getProducts();
+        $topOrderedProducts = DataAccessService::getTopOrderedProducts();
         $viewData = [
             "_title" => "Customer",
             "_avatar" => $profile["picture"],
-            "customer" => $profile
+            "customer" => $profile,
+            "products" => $products ?? [],
+            "topOrderProducts"=> $topOrderedProducts ?? []
         ];
         return (string)View::make("customer/index", $viewData);
     }

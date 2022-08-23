@@ -16,7 +16,7 @@ define("IMAGE_PATH", $root . 'images' . DIRECTORY_SEPARATOR);
 define("VIEW_PATH", $root . 'views' . DIRECTORY_SEPARATOR);
 if (php_sapi_name() === "fpm-fcgi") {
     define("STATIC_FILE_PATH", "");
-}else{
+} else {
     define("STATIC_FILE_PATH", 'views' . DIRECTORY_SEPARATOR);
 }
 
@@ -66,9 +66,9 @@ $router
     ->post(REGISTER_URL, [RegisterController::class, "register"])
     // product
     ->get("/product-detail", [ProductController::class, "detail"])
-    ->get("/product-add", [ProductController::class, "productForm"])
-    ->get("/product-edit", [ProductController::class, "productForm"])
-    ->post("/product", [ProductController::class, "submit"])
+    ->get("/product-add", [ProductController::class, "productForm"], VENDOR_ROLE)
+    ->get("/product-edit", [ProductController::class, "productForm"], VENDOR_ROLE)
+    ->post("/product", [ProductController::class, "submit"], VENDOR_ROLE)
     // error
     ->get("/404", [ErrorController::class, "notfound"])
     ->get("/500", [ErrorController::class, "internalError"])
