@@ -1,0 +1,59 @@
+/* NAV-TAB */
+
+.add-product-btn {
+    border: none;
+    padding: 8px 18px;
+    color: #e59400;
+}
+
+.add-product-btn:hover {
+    border: 1px solid #6c757d;
+    color: #e59400;
+}
+
+.add-product-img {
+    width: 23px;
+}
+
+/* CARD */
+
+.card-body {
+    position: relative;
+}
+
+.card-title {
+    font-size: 16px;
+}
+
+.card-title-link {
+    color: #212529;
+    text-decoration: none;
+}
+
+.card-title-link:hover,
+.card-title-link:active {
+    color: #e59400;
+}
+
+.text-muted {
+    font-size: 12px;
+}
+
+.card-edit-btn {
+    position: absolute;
+    top: 15px;
+    right: 5px;
+}
+
+.card-edit-icon {
+    width: 20px;
+}
+
+.card-price {
+    color: #e59400;
+    cursor: pointer;
+}
+
+.card-price:hover {
+    text-decoration: underline;
+}

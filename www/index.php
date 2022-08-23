@@ -35,11 +35,13 @@ require_once CONTROLLER_PATH . "ShipperController.php";
 require_once CONTROLLER_PATH . "LoginController.php";
 require_once CONTROLLER_PATH . "RegisterController.php";
 require_once CONTROLLER_PATH . "ProfileController.php";
+require_once CONTROLLER_PATH . "ProductController.php";
 require_once CONTROLLER_PATH . "ErrorController.php";
 
 use Controllers\CustomerController;
 use Controllers\ErrorController;
 use Controllers\LoginController;
+use Controllers\ProductController;
 use Controllers\ProfileController;
 use Controllers\RegisterController;
 use Controllers\ShipperController;
@@ -54,12 +56,20 @@ $router
     ->get("/", [ShipperController::class, "index"], SHIPPER_ROLE)
     ->get("/profile", [ProfileController::class, "index"])
     ->post("/profile", [ProfileController::class, "update"])
+    // login
     ->get(LOGIN_URL, [LoginController::class, "index"])
     ->post(LOGIN_URL, [LoginController::class, "login"])
     ->get("/logout", [LoginController::class, "logout"])
+    // register
     ->get(REGISTER_URL, [RegisterController::class, "index"])
     ->get(REGISTER_URL . "-detail", [RegisterController::class, "detail"])
     ->post(REGISTER_URL, [RegisterController::class, "register"])
+    // product
+    ->get("/product-detail", [ProductController::class, "detail"])
+    ->get("/product-add", [ProductController::class, "productForm"])
+    ->get("/product-edit", [ProductController::class, "productForm"])
+    ->post("/product", [ProductController::class, "submit"])
+    // error
     ->get("/404", [ErrorController::class, "notfound"])
     ->get("/500", [ErrorController::class, "internalError"])
     ->allowForwardStaticFile();
