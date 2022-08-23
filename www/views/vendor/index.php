@@ -3,6 +3,7 @@
  * @var array $account
  * @var array $vendor
  * @var array $products
+ * @var array $topOrderProducts
  */
 ?>
 
@@ -29,7 +30,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link add-product-btn" href="/product-add"><img
                                                     class="add-product-img" src="../../images/add-outline-icon.png"
-                                                    alt="add icon"> Add</a>
+                                                    alt="add icon"> Add Product</a>
                                     </li>
                                 </div>
                             </nav>
@@ -40,7 +41,7 @@
                                         <?php foreach ($products as $product): ?>
                                             <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
                                                 <div class="card">
-                                                    <img src="<?= "../../images/" . $product["picture"] ?>"
+                                                    <img src="<?= "../../images/" . $product["pictures"][0] ?>"
                                                          class="card-img-top" alt="product image">
                                                     <div class="card-body">
                                                         <h5 class="card-title"><a href="/product-detail?id=<?= $product["id"] ?>" class="card-title-link"><?= $product["name"] ?></a></h5>
@@ -53,7 +54,7 @@
                                                                     alt="edit icon"></a>
                                                     </div>
                                                     <div class="card-footer text-center">
-                                                        <span class="card-price">$<?= $product["price"] ?></span>
+                                                        <span class="card-price">$<?= number_format($product["price"], 2, '.', ',') ?></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -65,19 +66,27 @@
                                      aria-labelledby="nav-current-items">
                                     <br>
                                     <div class="row pe-4 ps-4 text-dark">
-                                        <div class="col-sm-6 col-md-4 col-lg-3">
-                                            <div class="card">
-                                                <img src="../../images/imgblank.png" class="card-img-top"
-                                                     alt="product image">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Item name</h5>
-                                                    <p class="card-text">Description</p>
-                                                    <p class="card-text"><small class="text-muted">Last updated 3 mins
-                                                            ago</small></p>
-                                                    <button class="btn btn-primary">more details</button>
+                                        <?php foreach ($topOrderProducts as $product): ?>
+                                            <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
+                                                <div class="card">
+                                                    <img src="<?= "../../images/" . $product["pictures"][0] ?>"
+                                                         class="card-img-top" alt="product image">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"><a href="/product-detail?id=<?= $product["id"] ?>" class="card-title-link"><?= $product["name"] ?></a></h5>
+                                                        <p class="card-text">
+                                                            <small class="text-muted"><?= $product["description"] ?></small>
+                                                        </p>
+                                                        <a href="/product-edit?id=<?= $product["id"] ?>" class="card-link card-edit-btn"><img
+                                                                    class="card-edit-icon"
+                                                                    src="../../images/edit-icon.png"
+                                                                    alt="edit icon"></a>
+                                                    </div>
+                                                    <div class="card-footer text-center">
+                                                        <span class="card-price">$<?= number_format($product["price"], 2, '.', ',') ?></span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>

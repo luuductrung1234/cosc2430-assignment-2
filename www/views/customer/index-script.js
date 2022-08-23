@@ -1,1 +1,4 @@
-document.getElementsByClassName("customer-header-title")[0].innerHTML = "Customer Home Page";
+function onAddToCart(productId)
+{
+    console.log(productId);
+}
