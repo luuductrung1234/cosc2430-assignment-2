@@ -86,6 +86,7 @@ class ProductController
 
         // move new picture, from temporary php host directory to /images/ directory
         for ($i = 0; $i < count($_FILES["pictures"]["name"]); $i++) {
+            if(empty($_FILES["pictures"]["name"][$i])) continue;
             $extension = explode('.', $_FILES["pictures"]["name"][$i])[1];
             $fileName = 'product-' . $product["id"] . '-' . $i . '.' . $extension;
             move_uploaded_file($_FILES["pictures"]["tmp_name"][$i], IMAGE_PATH . $fileName);
