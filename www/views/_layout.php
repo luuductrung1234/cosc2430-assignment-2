@@ -49,13 +49,18 @@
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-secondary btn-sm" type="submit"><img class="search-icon" src="../images/search-icon.png" alt="search icon"></button>
+                        <button class="btn btn-outline-secondary btn-sm" type="submit"><img class="search-icon"
+                                                                                            src="../images/search-icon.png"
+                                                                                            alt="search icon"></button>
                     </form>
                     <div class="navbar-side">
                         <?php if ($_show_cart): ?>
-                            <a class="cart-btn" href="/cart">
-                                <img class="cart-img" src="../images/cart-icon.png" alt="shopping cart"/>
-                            </a>
+                            <div class="cart">
+                                <a class="cart-btn" href="/cart">
+                                    <img class="cart-img" src="../images/cart-icon.png" alt="shopping cart"/>
+                                </a>
+                                <span id="cart-quantity" class="notified-quantity">0</span>
+                            </div>
                         <?php endif; ?>
                         <a href="/logout" type="button" class="logout-btn">Logout</a>
                         <a class="avatar-btn" href="/profile">
@@ -79,7 +84,7 @@
         <nav class="footer-nav">
             <ul class="footer-nav-items">
                 <li class="footer-nav-item"><a href="#">About Us</a></li>
-                <li class="footer-nav-item"><a href="./contact.html">Contact Us</a></li>
+                <li class="footer-nav-item"><a href="#">Contact Us</a></li>
             </ul>
         </nav>
         <nav class="footer-nav">
@@ -94,6 +99,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
+<script src="<?= STATIC_FILE_PATH . "script.js" ?>"></script>
 <?php if (is_array($_scripts) && !empty($_scripts)): ?>
     <?php foreach ($_scripts as $script): ?>
         <script rel="script" src="<?= $script ?>"></script>
