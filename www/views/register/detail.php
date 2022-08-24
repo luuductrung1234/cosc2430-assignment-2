@@ -4,6 +4,7 @@
  * @var bool $invalid
  * @var ?string $selectedRole
  */
+    $_SESSION["selectedRole"] = $selectedRole
 ?>
 
 <main id="register_main">
@@ -11,23 +12,20 @@
     <section id="register_container">
         <h3 id="register_vendor_heading">sign up</h3>
         <div class="register_form">
-            <form action="/register" method="POST">
+            <form action="/register" method="POST" enctype="multipart/form-data">
                 <div class="register">
                     <div class="register_label">user name<span class="color_red">*</span></div>
                     <div class="register_input">
-                        <input type="text" name="username" id="username">
-                    </div>
-                    <div>
-                        <input type="button" class="register_verify" onclick="verifyName()" value="verify">
+                        <input type="text" name="username" id="username" onkeyup="verifyName()">
                     </div>
                     <div class="register_alert" id="username_alert"></div>
                 </div>
                 <div class="register">
                     <div class="register_label">password<span class="color_red">*</span></div>
                     <div class="register_input">
-                        <input type="text" name="password" id="password">
+                        <input type="text" name="password" id="password" onkeyup="verifyPassword()">
                     </div>
-                    <div class="register_alert"></div>
+                    <div class="register_alert" id="password_alert"></div>
                 </div>
                 <div class="register">
                     <div class="register_label">password confirm<span class="color_red">*</span></div>
@@ -43,9 +41,6 @@
                         <div class="register_input">
                             <input type="text" name="firstname" id="firstname">
                         </div>
-                        <div>
-                            <button class="register_verify">verify</button>
-                        </div>
                         <div class="register_alert"></div>
                     </div>
                     <div class="register">
@@ -54,9 +49,6 @@
                         <div class="register_input">
                             <input type="text" name="lastname" id="lastname">
                         </div>
-                        <div>
-                            <button class="register_verify">verify</button>
-                        </div>
                         <div class="register_alert"></div>
                     </div>
                     <div class="register">
@@ -64,9 +56,6 @@
                         </div>
                         <div class="register_input">
                             <input type="text" name="address" id="address">
-                        </div>
-                        <div>
-                            <button class="register_verify">verify</button>
                         </div>
                         <div class="register_alert"></div>
                     </div>
@@ -121,19 +110,19 @@
                     <div class="register_alert"></div>
                 </div>
                 <div class="register">
-                    <div class="register_label">profile</div>
+                    <div class="register_label">profile picture</div>
                     <div class="register_input">
-                        <input type="file" name="picture" id="profile">
+                        <input type="file" name="picture" id="profile" multiple accept="image/*">
                     </div>
                     <div class="register_alert"></div>
+                </div>
+                <div id="register_vendor_button">
+                    <button class="register_vendor_button" id="register_gobackbutton">
+                        <a href="/register">go back</a>
+                    </button>
+                    <button type="submit" class="register_vendor_button" id="register_continuebutton">continue</button>
                 </div>
             </form>
         </div>
     </section>
-    <div id="register_vendor_button">
-        <button class="register_vendor_button" id="register_gobackbutton">
-            <a href="/register">go back</a>
-        </button>
-        <button class="register_vendor_button" id="register_continuebutton">continue</button>
-    </div>
 </main>

@@ -37,12 +37,14 @@ class RegisterController
         return (string)View::make("register/detail", $viewData);
     }
     
-    public function register(): string {
+    public function register(): void {
         $viewData = [
             "_title" => "Register Success",
             "_show_header" => false,
             "_show_footer" => false
         ];
-        return (string)View::make("register/success", $viewData);
+    }
+
+    public function vendorValidate(){
     }
 }

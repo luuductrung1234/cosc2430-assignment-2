@@ -26,7 +26,7 @@
         </div>
     </section>
     <div id="register_button">
-        <a href="#" class="register_button">go back</a>
+        <a href="/login" class="register_button">go back</a>
         <?php if (isset($selectedRole) && $selectedRole === 'customer'): ?>
             <a class="register_button" href="/register-detail?selectedRole=<?= $selectedRole ?>">continue</a>
         <?php elseif (isset($selectedRole) && $selectedRole === 'vendor'): ?>
