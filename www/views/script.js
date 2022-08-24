@@ -1,6 +1,8 @@
 updateCartQuantityNotification();
 
 function updateCartQuantityNotification() {
+    if (document.getElementById("cart-quantity") === null)
+        return;
     let cart = localStorage.getItem("cart");
     if (cart === null || cart.length === 0) {
         document.getElementById("cart-quantity").innerHTML = "0";
