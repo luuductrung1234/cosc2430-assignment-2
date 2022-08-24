@@ -37,14 +37,92 @@ class RegisterController
         return (string)View::make("register/detail", $viewData);
     }
     
+    /// this function run when click continue ///
     public function register(): void {
         $viewData = [
             "_title" => "Register Success",
             "_show_header" => false,
             "_show_footer" => false
         ];
+        if ($_SESSION["selectedRole"] = "vendor"){
+            $this->validateVendor();
+        }
     }
+    
+    public function validateVendor(): void{
+        $account_data = file_get_contents(DATA_PATH . "account.db");
+        $vendor_data = file_get_contents(DATA_PATH . "vendor.db");
 
-    public function vendorValidate(){
+        $account = json_decode($account_data, true);
+        $vendor = json_decode($vendor_data, true);
+
+
+        $new_vendor = array(
+            "id" => 0,
+            "business_name" => $_POST["businessName"],
+            "business_address" => $_POST["businessAddress"],
+            "email" => $_POST["email"],
+            "phone" => $_POST["phone"],
+            "profile_picture" => $_FILES["picture"],
+        );
+        $new_account = array(
+            "username" => $_POST["username"],
+            "password" => $_POST["password"],
+            "email" => $_POST["email"],
+            "role" => "vendor",
+            "profileId" => 0
+        );
+
+        if (!isset($_FILES["picture"]) || empty($_FILES["picture"]["name"])) {
+            $new_vendor["profile_picture"] = "";
+        }
+        $extension = explode('.', $_FILES["picture"]["name"])[1];
+        $fileName = uniqid() . "." . $extension;
+        move_uploaded_file($_FILES["picture"]["tmp_name"], IMAGE_PATH . $fileName);
+        $new_vendor["profile_picture"] = $fileName;
+
+        $username_unique = true;
+        $business_unique = true;
+    
+        for($i = 0; $i < count($account); $i++){
+            if ($account[$i]["username"] == $new_account["username"]){
+                $username_unique = false;
+                break;
+            }
+            $new_vendor["id"] = $account[$i]["profileId"] +1;
+            $new_account["profileId"] = $account[$i]["profileId"] +1;
+        }  
+
+
+        for($i = 0; $i < count($vendor); $i++){
+            if ($vendor[$i]["businessName"] == $new_vendor["business_name"] || $vendor[$i]["businessAddress"] == $new_vendor["business_address"]){
+                $business_unique = false;
+                break;
+            }
+        }
+
+        if ($username_unique && $business_unique){
+            $pw = $new_account["password"];
+            $hash_pw = password_hash($pw, PASSWORD_BCRYPT);
+            $new_account["password"] = $hash_pw;
+
+            array_push($vendor, $new_vendor);
+            $vendor_encode = json_encode($vendor);
+            file_put_contents(DATA_PATH . "vendor.db", $vendor_encode);
+
+            array_push($account, $new_account);
+            $account_encode = json_encode($account);
+            file_put_contents(DATA_PATH . "account.db", $account_encode);
+        }
+        else if (!$username_unique){
+            echo "<script>alert('Username not available!');</script>";
+            header("Location: " . "/register-detail" . "selectedRole=vendor");
+        }
+        else{
+            echo "<script>alert('Business Name/Address already exsited');</script>";
+            header("Location: " . "/register-detail" . "selectedRole=vendor");
+        }
     }
 }
+
+

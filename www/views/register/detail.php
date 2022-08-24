@@ -65,18 +65,12 @@
                         <div class="register_input">
                             <input type="text" name="businessName" id="business_name">
                         </div>
-                        <div>
-                            <input type="button" class="register_verify" onclick="verifyBusinessName()" value="verify">
-                        </div>
                         <div class="register_alert" id="business_name_alert"></div>
                     </div>
                     <div class="register">
                         <div class="register_label">business address<span class="color_red">*</span></div>
                         <div class="register_input">
                             <input type="text" name="businessAddress" id="business_address">
-                        </div>
-                        <div>
-                            <button class="register_verify">verify</button>
                         </div>
                         <div class="register_alert"></div>
                     </div>
@@ -120,7 +114,8 @@
                     <button class="register_vendor_button" id="register_gobackbutton">
                         <a href="/register">go back</a>
                     </button>
-                    <button type="submit" class="register_vendor_button" id="register_continuebutton">continue</button>
+                    <input type="button" class="register_vendor_button" onclick="isVerified()" value="Confirm" readonly>
+                    <button type="submit" class="register_vendor_button" id="register_continuebutton" disabled>continue</button>
                 </div>
             </form>
         </div>

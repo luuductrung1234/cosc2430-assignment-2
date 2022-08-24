@@ -9,6 +9,8 @@ const passwordAlert = document.querySelector("#password_alert");
 const passwordConfirm = document.querySelector("#password_confirm");
 const passwordConfirmAlert = document.querySelector("#password_confirm_alert");
 
+const continueButton = document.querySelector("#register_continuebutton");
+
 let url;
 
 function verifyPassword(){
@@ -20,10 +22,12 @@ function verifyPassword(){
     }
     else if (passwordInput.match(pattern)){
         passwordAlert.innerHTML = `<span class="color_green">Valid password</span>`;
+        return true;
     }
     else{
         passwordAlert.innerHTML = `<span class="color_red">Password must contains at least one upper case letter, at least one lower case letter, at least one digit, at least one special letter in the set !@#$%^&*, NO other kind of characters, has a length from 8 to 20 characters</span>`;
     }
+    return false;
 }
 
 function matchPassword() {
@@ -34,31 +38,40 @@ function matchPassword() {
         passwordConfirmAlert.innerHTML = `<span></span>`;
     }else if (passwordInput == confirmInput) {
         passwordConfirmAlert.innerHTML = `<span class="color_green">password match!</span>`;
-
+        return true;
     } else {
         passwordConfirmAlert.innerHTML = `<span class="color_red">password does not match!</span>`;
     }
+    return false;
 }
 
 function verifyName() {
     let userNameValue = userName.value;
-    let pattern = (/^[a-zA-Z\-].{8,15}$/); 
+    let pattern = (/^[a-zA-Z0-9].{8,15}$/); 
     if (userNameValue == "") {
         userNameAlert.innerHTML = `<span class="color_red">Please enter a username</span>`;
     }else if(userNameValue.match(pattern)){
         userNameAlert.innerHTML = `<span class="color_green">Available username</span>`;
+        return true;
     }
     else {
-        userNameAlert.innerHTML = `<span class="color_red">Password must contain only letters(lower or upper) and has a length of 8-15 characters</span>`;
+        userNameAlert.innerHTML = `<span class="color_red">Password must contain only letters(lower or upper) and digits and has a length of 8-15 characters</span>`;
     }
+    return false;
 }
 
-function verifyBusinessName() {
-    let businessNameValue = businessName.value;
-    if (businessNameValue == "") {
-        window.alert("write business name");
-    } else {
-        businessNameAlert.innerHTML = `<span class="color_green">${businessNameValue} is available username</span>`
+
+function isVerified(){
+    let isNameVerified = verifyName();
+    let isPasswordVerified = verifyPassword();
+    let isPasswordMatched = matchPassword();
+
+    if (isNameVerified && isPasswordVerified && isPasswordMatched){
+        continueButton.disabled = false;
+        alert("You can continue")
+    }
+    else{
+        continueButton.disabled = true;
     }
 }
 
