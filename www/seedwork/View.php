@@ -56,7 +56,7 @@ class View
         $account = AuthenticationService::getAccount();
         
         $viewDir = dirname($viewPath);
-        $dirParts = explode("/", $viewDir);
+        $dirParts = explode(DIRECTORY_SEPARATOR, $viewDir);
         $cwdName = $dirParts[count($dirParts) - 1];
         
         $viewParts = explode("/", $this->view);
