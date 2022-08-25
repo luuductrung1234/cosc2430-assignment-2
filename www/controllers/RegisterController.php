@@ -44,10 +44,15 @@ class RegisterController
             "_show_header" => false,
             "_show_footer" => false
         ];
-        if ($_SESSION["selectedRole"] = "vendor"){
+
+        if ($_SESSION["selectedRole"] == "vendor"){
             $this->validateVendor();
+        }else if ($_SESSION["selectedRole"] == "shipper"){
+            $this->validateShipper();
+        }else if ($_SESSION["selectedRole"] == "customer"){
+            $this->validateCustomer();
         }
-    }
+}
     
     public function validateVendor(): void{
         $account_data = file_get_contents(DATA_PATH . "account.db");
@@ -73,27 +78,21 @@ class RegisterController
             "profileId" => 0
         );
 
-        if (!isset($_FILES["picture"]) || empty($_FILES["picture"]["name"])) {
-            $new_vendor["picture"] = "";
-        }
-        else{
-            $extension = explode('.', $_FILES["picture"]["name"])[1];
-            $fileName = uniqid() . "." . $extension;
-            move_uploaded_file($_FILES["picture"]["tmp_name"], IMAGE_PATH . $fileName);
-            $new_vendor["picture"] = $fileName;
-        }
-
         $username_unique = true;
         $business_unique = true;
     
+        $curr_id = 0;
         for($i = 0; $i < count($account); $i++){
             if ($account[$i]["username"] == $new_account["username"]){
                 $username_unique = false;
                 break;
             }
-            $new_vendor["id"] = $account[$i]["profileId"] +1;
-            $new_account["profileId"] = $account[$i]["profileId"] +1;
-        }  
+            if ($account[$i]["role"] == "vendor"){
+                $curr_id = max($curr_id, $account["profileId"]+1);
+            }
+        }
+        $new_vendor["id"] = $curr_id;
+        $new_account["profileId"] = $curr_id;
 
 
         for($i = 0; $i < count($vendor); $i++){
@@ -104,6 +103,17 @@ class RegisterController
         }
 
         if ($username_unique && $business_unique){
+            if (!isset($_FILES["picture"]) || empty($_FILES["picture"]["name"])) {
+                $new_vendor["picture"] = "";
+            }
+            else{
+                $curr_id = $new_account['profileId'];
+                $extension = explode('.', $_FILES["picture"]["name"])[1];
+                $fileName = "vendor" . "-" . "$curr_id" . "." . $extension;
+                move_uploaded_file($_FILES["picture"]["tmp_name"], IMAGE_PATH . $fileName);
+                $new_vendor["picture"] = $fileName;
+            }
+
             $pw = $new_account["password"];
             $hash_pw = password_hash($pw, PASSWORD_BCRYPT);
             $new_account["password"] = $hash_pw;
@@ -121,16 +131,151 @@ class RegisterController
         }
         else if (!$username_unique){
             echo "<script>alert('Username not available!');</script>";
-            header("Location: " . "/register-detail" . "selectedRole=vendor");
+            header("Location: " . "/register-detail" . "?selectedRole=vendor");
         }
         else{
             echo "<script>alert('Business Name/Address already exsited');</script>";
-            header("Location: " . "/register-detail" . "selectedRole=vendor");
+            header("Location: " . "/register-detail" . "?selectedRole=vendor");
         }
     }
 
-    public function validateShipper(){
-        return;
+    public function validateShipper(): void{
+        $account_data = file_get_contents(DATA_PATH . "account.db");
+        $shipper_data = file_get_contents(DATA_PATH . "shipper.db");
+
+        $account = json_decode($account_data, true);
+        $shipper = json_decode($shipper_data, true);
+
+        $new_account = array(
+            "username" => $_POST["username"],
+            "password" => $_POST["password"],
+            "email" => $_POST["email"],
+            "role" => "shipper",
+            "profileId" => 0
+        );
+        $new_shipper = array(
+            "id" => 0,
+            "firstname" => $_POST["firstname"],
+            "lastname" => $_POST["lastname"],
+            "email" => $_POST["email"],
+            "address" => $_POST["address"],
+            "phone" => $_POST["phone"],
+            "distributionId" => $_POST["distribution"],
+            "picture" => $_FILES["picture"],
+        );
+
+        $username_unique = true;
+        $curr_id = 0;
+        for($i = 0; $i < count($account); $i++){
+            if ($account[$i]["username"] == $new_account["username"]){
+                $username_unique = false;
+                break;
+            }
+            if ($account[$i]["role"] == "shipper"){
+                $curr_id = max($curr_id, $account["profileId"]+1);
+            }
+        }
+        $new_shipper["id"] = $curr_id;
+        $new_account["profileId"] = $curr_id;
+
+        if ($username_unique){
+            if (!isset($_FILES["picture"]) || empty($_FILES["picture"]["name"])) {
+                $new_shipper["picture"] = "";
+            }
+            else{
+                $extension = explode('.', $_FILES["picture"]["name"])[1];
+                $fileName = "shipper" . "-" . "$curr_id" . "." . $extension;
+                move_uploaded_file($_FILES["picture"]["tmp_name"], IMAGE_PATH . $fileName);
+                $new_shipper["picture"] = $fileName;
+            }
+
+            $pw = $new_account["password"];
+            $hash_pw = password_hash($pw, PASSWORD_BCRYPT);
+            $new_account["password"] = $hash_pw;
+
+            array_push($shipper, $new_shipper);
+            $shipper_encode = json_encode($shipper);
+            file_put_contents(DATA_PATH . "shipper.db", $shipper_encode);
+
+            array_push($account, $new_account);
+            $account_encode = json_encode($account);
+            file_put_contents(DATA_PATH . "account.db", $account_encode);
+
+            echo "'<script>alert('Registraion successful!');</script>';";
+            header("Location: " . "/login");
+        }else{
+            echo "<script>alert('Username not available!');</script>";
+            header("Location: " . "/register-detail" . "?selectedRole=shipper");
+        }
+    }
+
+    public function validateCustomer(): void{
+        $account_data = file_get_contents(DATA_PATH . "account.db");
+        $customer_data = file_get_contents(DATA_PATH . "customer.db");
+
+        $account = json_decode($account_data, true);
+        $customer = json_decode($customer_data, true);
+
+        $new_account = array(
+            "username" => $_POST["username"],
+            "password" => $_POST["password"],
+            "email" => $_POST["email"],
+            "role" => "customer",
+            "profileId" => 0
+        );
+        $new_customer = array(
+            "id" => 0,
+            "firstname" => $_POST["firstname"],
+            "lastname" => $_POST["lastname"],
+            "email" => $_POST["email"],
+            "address" => $_POST["address"],
+            "phone" => $_POST["phone"],
+            "picture" => $_FILES["picture"],
+        );
+
+        $username_unique = true;
+        $curr_id = 0;
+        for($i = 0; $i < count($account); $i++){
+            if ($account[$i]["username"] == $new_account["username"]){
+                $username_unique = false;
+                break;
+            }
+            if ($account[$i]["role"] == "customer"){
+                $curr_id = max($curr_id, $account["profileId"]+1);
+            }
+        }
+        $new_customer["id"] = $curr_id;
+        $new_account["profileId"] = $curr_id;
+        
+        if ($username_unique){
+            if (!isset($_FILES["picture"]) || empty($_FILES["picture"]["name"])) {
+                $new_customer["picture"] = "";
+            }
+            else{
+                $extension = explode('.', $_FILES["picture"]["name"])[1];
+                $fileName = "customer" . "-" . "$curr_id" . "." . $extension;
+                move_uploaded_file($_FILES["picture"]["tmp_name"], IMAGE_PATH . $fileName);
+                $new_customer["picture"] = $fileName;
+            }
+
+            $pw = $new_account["password"];
+            $hash_pw = password_hash($pw, PASSWORD_BCRYPT);
+            $new_account["password"] = $hash_pw;
+
+            array_push($customer, $new_customer);
+            $customer_encode = json_encode($customer);
+            file_put_contents(DATA_PATH . "customer.db", $customer_encode);
+
+            array_push($account, $new_account);
+            $account_encode = json_encode($account);
+            file_put_contents(DATA_PATH . "account.db", $account_encode);
+
+            echo "'<script>alert('Registraion successful!');</script>';";
+            header("Location: " . "/login");
+        }else{
+            echo "<script>alert('Username not available!');</script>";
+            header("Location: " . "/register-detail" . "?selectedRole=customer");
+        }
     }
 }
 

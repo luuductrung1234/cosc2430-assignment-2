@@ -4,7 +4,8 @@
  * @var bool $invalid
  * @var ?string $selectedRole
  */
-    $_SESSION["selectedRole"] = $selectedRole
+
+$_SESSION["selectedRole"] = $selectedRole;
 ?>
 
 <main id="register_main">
@@ -63,14 +64,14 @@
                     <div class="register">
                         <div class="register_label">business name<span class="color_red">*</span></div>
                         <div class="register_input">
-                            <input type="text" name="businessName" id="business_name">
+                            <input type="text" name="businessName" id="business_name" require>
                         </div>
                         <div class="register_alert" id="business_name_alert"></div>
                     </div>
                     <div class="register">
                         <div class="register_label">business address<span class="color_red">*</span></div>
                         <div class="register_input">
-                            <input type="text" name="businessAddress" id="business_address">
+                            <input type="text" name="businessAddress" id="business_address" require>
                         </div>
                         <div class="register_alert"></div>
                     </div>
@@ -111,7 +112,7 @@
                     <div class="register_alert"></div>
                 </div>
                 <div id="register_vendor_button">
-                    <button class="register_vendor_button" id="register_gobackbutton">
+                    <button type="button" class="register_vendor_button" id="register_gobackbutton">
                         <a href="/register">go back</a>
                     </button>
                     <input type="button" class="register_vendor_button" onclick="isVerified()" value="Confirm" readonly>
