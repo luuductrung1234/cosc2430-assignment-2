@@ -30,10 +30,10 @@ thead {
     transition: all 0.3s 0.1s ease-in-out;
 }
 
-.toggle-btn .active {
+.toggle-btn.active {
     background: darkgoldenrod !important;
 }
 
-.toggle-btn .active>.inner-circle {
+.toggle-btn.active>.inner-circle {
     margin-left: 19px;
 }
