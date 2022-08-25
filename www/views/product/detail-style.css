@@ -1,5 +1,15 @@
 /* IMAGE */
 
+.product-main-img,
+.product-sub-img {
+    transition: transform .2s;
+}
+
+.product-main-img:hover,
+.product-sub-img:hover {
+    transform: scale(1.1);
+}
+
 .product-main-img {
     margin-bottom: 10px;
     border-radius: 5px;

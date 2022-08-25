@@ -10,19 +10,19 @@ use SeedWork\View;
 use Services\AuthenticationService;
 use Services\DataAccessService;
 
-class ShipperController
+class CartController
 {
     public function index(): string
     {
         $account = AuthenticationService::getAccount();
         $profile = DataAccessService::getProfile($account["profileId"], $account["role"]);
+        $products = DataAccessService::getProducts();
         $viewData = [
-            "_title" => "Shipper",
+            "_title" => "Cart",
             "_avatar" => $profile["picture"],
-            "shipper" => [
-                "name" => "John"
-            ]
+            "customer" => $profile,
+            "products" => $products ?? [],
         ];
-        return (string)View::make("shipper/index", $viewData);
+        return (string)View::make("cart/index", $viewData);
     }
 }

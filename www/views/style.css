@@ -47,6 +47,22 @@ a, button {
     width: 20px;
 }
 
+.cart {
+    display: inline-block;
+    position: relative;
+}
+
+.notified-quantity {
+    font-size: 11px;
+    color: #fff;
+    background-color: #dc3545;
+    border-radius: 50%;
+    padding: 0px 5px;
+    position: absolute;
+    top: -8px;
+    right: -3px;
+}
+
 .cart-btn {
     border-radius: 5px;
     padding: 10px;
