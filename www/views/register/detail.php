@@ -12,6 +12,14 @@ $_SESSION["selectedRole"] = $selectedRole;
     <h2>Welcome to LAZADA</h2>
     <section id="register_container">
         <h3 id="register_vendor_heading">sign up</h3>
+        <?php if (isset($_SESSION["username_existed"]) && $_SESSION["username_existed"]): ?>
+            <p class="color_red" id="register_vendor_heading">Username already existed</p>
+            <? unset($_SESSION["username_existed"]); ?>
+        <?php endif; ?>
+        <?php if (isset($_SESSION["business_existed"]) && $_SESSION["business_existed"]): ?>
+            <p class="color_red" id="register_vendor_heading">Business Name/Address already existed</p>
+            <? unset($_SESSION["business_existed"]); ?>
+        <?php endif; ?>
         <div class="register_form">
             <form action="/register" method="POST" enctype="multipart/form-data">
                 <div class="register">

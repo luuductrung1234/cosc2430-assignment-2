@@ -88,7 +88,7 @@ class RegisterController
                 break;
             }
             if ($account[$i]["role"] == "vendor"){
-                $curr_id = max($curr_id, $account["profileId"]+1);
+                $curr_id = max($curr_id, $account[$i]["profileId"]+1);
             }
         }
         $new_vendor["id"] = $curr_id;
@@ -126,17 +126,23 @@ class RegisterController
             $account_encode = json_encode($account);
             file_put_contents(DATA_PATH . "account.db", $account_encode);
 
-            echo "'<script>alert('Registraion successful!');</script>';";
-            header("Location: " . "/login");
+            unset($_SESSION["username_existed"]);
+            echo "<script>
+                    location.pathname = '/login';
+                </script>";
         }
         else if (!$username_unique){
-            echo "<script>alert('Username not available!');</script>";
-            header("Location: " . "/register-detail" . "?selectedRole=vendor");
+            $_SESSION["username_existed"] = true;
+            echo "<script>
+                    window.history.back();
+                </script>";
         }
         else{
-            echo "<script>alert('Business Name/Address already exsited');</script>";
-            header("Location: " . "/register-detail" . "?selectedRole=vendor");
-        }
+            $_SESSION["business_existed"] = true;
+            echo "<script>
+                    window.history.back();
+                </script>";
+        }  
     }
 
     public function validateShipper(): void{
@@ -172,7 +178,7 @@ class RegisterController
                 break;
             }
             if ($account[$i]["role"] == "shipper"){
-                $curr_id = max($curr_id, $account["profileId"]+1);
+                $curr_id = max($curr_id, $account[$i]["profileId"]+1);
             }
         }
         $new_shipper["id"] = $curr_id;
@@ -201,11 +207,15 @@ class RegisterController
             $account_encode = json_encode($account);
             file_put_contents(DATA_PATH . "account.db", $account_encode);
 
-            echo "'<script>alert('Registraion successful!');</script>';";
-            header("Location: " . "/login");
+            unset($_SESSION["username_existed"]);
+            echo "<script>
+                    location.pathname = '/login';
+                </script>";
         }else{
-            echo "<script>alert('Username not available!');</script>";
-            header("Location: " . "/register-detail" . "?selectedRole=shipper");
+            $_SESSION["username_existed"] = true;
+            echo "<script>
+                    window.history.back();
+                </script>";
         }
     }
 
@@ -241,7 +251,7 @@ class RegisterController
                 break;
             }
             if ($account[$i]["role"] == "customer"){
-                $curr_id = max($curr_id, $account["profileId"]+1);
+                $curr_id = max($curr_id, $account[$i]["profileId"]+1);
             }
         }
         $new_customer["id"] = $curr_id;
@@ -270,11 +280,15 @@ class RegisterController
             $account_encode = json_encode($account);
             file_put_contents(DATA_PATH . "account.db", $account_encode);
 
-            echo "'<script>alert('Registraion successful!');</script>';";
-            header("Location: " . "/login");
+            unset($_SESSION["username_existed"]);
+            echo "<script>
+                    location.pathname = '/login';
+                </script>";
         }else{
-            echo "<script>alert('Username not available!');</script>";
-            header("Location: " . "/register-detail" . "?selectedRole=customer");
+            $_SESSION["username_existed"] = true;
+            echo "<script>
+                    window.history.back();
+                </script>";
         }
     }
 }

@@ -1,8 +1,8 @@
 const userName = document.querySelector("#username");
-const userNameAlert = document.querySelector("#username_alert")
+const userNameAlert = document.querySelector("#username_alert");
 
 const businessName = document.querySelector("#business_name");
-const businessNameAlert = document.querySelector("#business_name_alert")
+const businessNameAlert = document.querySelector("#business_name_alert");
 
 const password = document.querySelector("#password");
 const passwordAlert = document.querySelector("#password_alert");
@@ -75,3 +75,10 @@ function isVerified(){
     }
 }
 
+function usernameExisted(){
+    userNameAlert.innerHTML = `<span class="color_red">Username already existed</span>`;
+}
+
+function businessExisted(){
+    businessNameAlert.innerHTML = `<span class="color_red">Business Name/Address already existed</span>`;
+}
