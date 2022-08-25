@@ -122,7 +122,7 @@ class DataAccessService
     public static function getProfile(int $profileId, string $role): ?array
     {
         $profiles = self::loadProfiles($role);
-        $profile = array_filter($profiles, fn($p) => $p["id"] === $profileId);
+        $profile = array_values(array_filter($profiles, fn($p) => $p["id"] === $profileId));
         return empty($profile) ? null : $profile[0];
     }
 

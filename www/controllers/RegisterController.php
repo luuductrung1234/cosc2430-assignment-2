@@ -59,11 +59,11 @@ class RegisterController
 
         $new_vendor = array(
             "id" => 0,
-            "business_name" => $_POST["businessName"],
-            "business_address" => $_POST["businessAddress"],
+            "businessName" => $_POST["businessName"],
+            "businessAddress" => $_POST["businessAddress"],
             "email" => $_POST["email"],
             "phone" => $_POST["phone"],
-            "profile_picture" => $_FILES["picture"],
+            "picture" => $_FILES["picture"],
         );
         $new_account = array(
             "username" => $_POST["username"],
@@ -74,12 +74,14 @@ class RegisterController
         );
 
         if (!isset($_FILES["picture"]) || empty($_FILES["picture"]["name"])) {
-            $new_vendor["profile_picture"] = "";
+            $new_vendor["picture"] = "";
         }
-        $extension = explode('.', $_FILES["picture"]["name"])[1];
-        $fileName = uniqid() . "." . $extension;
-        move_uploaded_file($_FILES["picture"]["tmp_name"], IMAGE_PATH . $fileName);
-        $new_vendor["profile_picture"] = $fileName;
+        else{
+            $extension = explode('.', $_FILES["picture"]["name"])[1];
+            $fileName = uniqid() . "." . $extension;
+            move_uploaded_file($_FILES["picture"]["tmp_name"], IMAGE_PATH . $fileName);
+            $new_vendor["picture"] = $fileName;
+        }
 
         $username_unique = true;
         $business_unique = true;
@@ -95,7 +97,7 @@ class RegisterController
 
 
         for($i = 0; $i < count($vendor); $i++){
-            if ($vendor[$i]["businessName"] == $new_vendor["business_name"] || $vendor[$i]["businessAddress"] == $new_vendor["business_address"]){
+            if ($vendor[$i]["businessName"] == $new_vendor["businessName"] || $vendor[$i]["businessAddress"] == $new_vendor["businessAddress"]){
                 $business_unique = false;
                 break;
             }
@@ -113,6 +115,9 @@ class RegisterController
             array_push($account, $new_account);
             $account_encode = json_encode($account);
             file_put_contents(DATA_PATH . "account.db", $account_encode);
+
+            echo "'<script>alert('Registraion successful!');</script>';";
+            header("Location: " . "/login");
         }
         else if (!$username_unique){
             echo "<script>alert('Username not available!');</script>";
@@ -123,6 +128,9 @@ class RegisterController
             header("Location: " . "/register-detail" . "selectedRole=vendor");
         }
     }
-}
 
+    public function validateShipper(){
+        return;
+    }
+}
 
