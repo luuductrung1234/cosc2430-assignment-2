@@ -7,9 +7,13 @@
 ?>
 
 <main id="register_main">
-    <h2>Welcome to LAZADA</h2>
+    <div class="register-title">
+        <h2><span>W</span>elcome to <span>L</span>AZADA</h2>
+    </div>
     <section id="register_container">
-        <h3>Who are you?</h3>
+        <div class="user-title">
+            <h3>Who are you<span>?</span></h3>
+        </div>
         <div id="register_row">
             <a href="/register?selectedRole=vendor" class="register_col">
                 <img src="../../images/select-vendor.jpg" alt="vendor">

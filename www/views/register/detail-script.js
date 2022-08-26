@@ -25,7 +25,7 @@ function verifyPassword(){
         return true;
     }
     else{
-        passwordAlert.innerHTML = `<span class="color_red">Password must contains at least one upper case letter, at least one lower case letter, at least one digit, at least one special letter in the set !@#$%^&*, NO other kind of characters, has a length from 8 to 20 characters</span>`;
+        passwordAlert.innerHTML = `<span class="color_red">Password must contains at least one upper case letter, one lower case letter, one digit, and one special letter in the set !@#$%^&*, NO other kind of characters, must have 8 to 20 characters</span>`;
     }
     return false;
 }
@@ -55,7 +55,7 @@ function verifyName() {
         return true;
     }
     else {
-        userNameAlert.innerHTML = `<span class="color_red">Password must contain only letters(lower or upper) and digits and has a length of 8-15 characters</span>`;
+        userNameAlert.innerHTML = `<span class="color_red">Username must contain only letters(lower or upper), digits and contains of 8-15 characters</span>`;
     }
     return false;
 }
