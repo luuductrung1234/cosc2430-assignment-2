@@ -198,6 +198,12 @@ a, button {
 
 @media only screen and (max-width: 960px) {
 
+    .main-footer {
+        width: 100%;
+        position:relative;
+        bottom:0;
+    }
+
     /* HEADER */
     .navbar-side {
         margin-left: 0px;
