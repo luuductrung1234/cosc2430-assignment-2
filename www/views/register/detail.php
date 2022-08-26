@@ -9,9 +9,13 @@ $_SESSION["selectedRole"] = $selectedRole;
 ?>
 
 <main id="register_main">
-    <h2>Welcome to LAZADA</h2>
+    <div class="register-title">
+        <h2><span>W</span>elcome to <span>L</span>AZADA</h2>
+    </div>
     <section id="register_container">
-        <h3 id="register_vendor_heading">sign up</h3>
+        <h3 class="register_vendor_heading">
+            <span>S</span>ign up
+        </h3>
         <?php if (isset($_SESSION["username_existed"]) && $_SESSION["username_existed"]): ?>
             <p class="color_red" id="register_vendor_heading">Username already existed</p>
             <? unset($_SESSION["username_existed"]); ?>
@@ -120,11 +124,11 @@ $_SESSION["selectedRole"] = $selectedRole;
                     <div class="register_alert"></div>
                 </div>
                 <div id="register_vendor_button">
-                    <button type="button" class="register_vendor_button" id="register_gobackbutton">
+                    <button type="button" class="register_vendor_button back">
                         <a href="/register">go back</a>
                     </button>
-                    <input type="button" class="register_vendor_button" onclick="isVerified()" value="Confirm" readonly>
-                    <button type="submit" class="register_vendor_button" id="register_continuebutton" disabled>continue</button>
+                    <input type="button" class="register_confirm_button" onclick="isVerified()" value="Confirm" readonly>
+                    <button type="submit" class="register_vendor_button continue" id="register_continuebutton" disabled>continue</button>
                 </div>
             </form>
         </div>
