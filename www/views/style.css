@@ -108,16 +108,13 @@ a, button {
 /* FOOTER */
 
 .main-footer {
+    margin-top: 85px;
     background-color: #f7f7f7;
     padding: 10px;
     display: flex;
     justify-content: space-around;
-    /* position: fixed;*/
-    /*left: 0;*/
-    /*bottom: 0; */
     width: 100%;
-    position:absolute;
-    bottom:0;
+    
 }
 
 .footer-body {
@@ -197,6 +194,11 @@ a, button {
 }
 
 @media only screen and (max-width: 960px) {
+
+    .main-footer {
+        position:relative;
+        width: 100%;
+    }
 
     /* HEADER */
     .navbar-side {
