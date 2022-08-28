@@ -28,27 +28,30 @@
                            value='<?= !empty($product) ? $product["id"] : 0 ?>' readonly>
                     <div class='col-md-8'>
                         <label class='info-label'>Product Name</label>
-                        <input type='text' name="name" class='form-control' placeholder="name"
-                               value='<?= !empty($product) ? $product["name"] : "" ?>'>
+                        <input type='text' id="product-name" name="name" class='form-control' placeholder="name"
+                               value='<?= !empty($product) ? $product["name"] : "" ?>' onkeyup="validateProductName()">
+                        <div id="name-alert"></div>
                     </div>
                     <div class='col-md-4'>
                         <label class='info-label'>Price</label>
-                        <input type='number' name="price" step="0.01" class='form-control'
-                               value='<?= !empty($product) ? $product["price"] : 0.0 ?>'>
+                        <input type='number' id="product-price" name="price" step="0.01" class='form-control'
+                               value='<?= !empty($product) ? $product["price"] : 0.0 ?>' onkeyup="validatePrice()">
+                        <div id="price-alert"></div>
                     </div>
                 </div>
                 <div class='row mt-3'>
                     <div class='col-md-12'>
                         <label class='info-label'>Description</label>
-                        <textarea name="description" class='form-control'
-                                  placeholder='description'><?= !empty($product) ? $product["description"] : "" ?></textarea>
+                        <textarea name="description" id="product-description" class='form-control'
+                                  placeholder='description' onkeyup="validateDescription()"><?= !empty($product) ? $product["description"] : "" ?></textarea>
+                        <div id="description-alert"></div>
                     </div>
                 </div>
                 <div class='row mt-3'>
                     <div class='mt-3 text-center'>
-                        <button class='btn product-btn' type='submit'><img src="../../images/save-icon.png"
+                        <button class='btn product-btn' type='submit' id="product-add-button" disabled><img src="../../images/save-icon.png"
                                                                            class="product-btn-img"
-                                                                           alt="cart icon"></button>
+                                                                           alt="cart icon" ></button>
                     </div>
                 </div>
             </div>
@@ -60,19 +63,19 @@
                 </div>
                 <div class='row mt-2'>
                     <div class="input-group col-md-12">
-                        <input type="file" name="pictures[]" class="form-control" id="upload-avatar">
+                        <input type="file" name="pictures[]" class="form-control" id="upload-avatar" multiple accept="image/*">
                         <label class="input-group-text" for="upload-avatar">Main</label>
                     </div>
                 </div>
                 <div class='row mt-4'>
                     <div class="input-group col-md-12">
-                        <input type="file" name="pictures[]" class="form-control" id="upload-avatar">
+                        <input type="file" name="pictures[]" class="form-control" id="upload-avatar" multiple accept="image/*">
                         <label class="input-group-text" for="upload-avatar">Sub</label>
                     </div>
                 </div>
                 <div class='row mt-4'>
                     <div class="input-group col-md-12">
-                        <input type="file" name="pictures[]" class="form-control" id="upload-avatar">
+                        <input type="file" name="pictures[]" class="form-control" id="upload-avatar" multiple accept="image/*">
                         <label class="input-group-text" for="upload-avatar">Sub</label>
                     </div>
                 </div>

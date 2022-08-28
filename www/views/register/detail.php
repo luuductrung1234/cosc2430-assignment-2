@@ -36,14 +36,14 @@ $_SESSION["selectedRole"] = $selectedRole;
                 <div class="register">
                     <div class="register_label">password<span class="color_red">*</span></div>
                     <div class="register_input">
-                        <input type="text" name="password" id="password" onkeyup="verifyPassword()">
+                        <input type="password" name="password" id="password" onkeyup="verifyPassword()">
                     </div>
                     <div class="register_alert" id="password_alert"></div>
                 </div>
                 <div class="register">
                     <div class="register_label">password confirm<span class="color_red">*</span></div>
                     <div class="register_input">
-                        <input type="text" name="confirmedPassword" id="password_confirm" onkeyup="matchPassword()">
+                        <input type="password" name="confirmedPassword" id="password_confirm" onkeyup="matchPassword()">
                     </div>
                     <div class="register_alert" id="password_confirm_alert"></div>
                 </div>
