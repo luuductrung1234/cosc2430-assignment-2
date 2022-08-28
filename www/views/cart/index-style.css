@@ -22,3 +22,13 @@ body {
 .spec {
   font-size: 11px;
 }
+
+.trash-button{
+  padding: 0;
+border: none;
+background: none;
+}
+
+.bold{
+  font-weight: bold;
+}
