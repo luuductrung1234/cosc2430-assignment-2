@@ -8,7 +8,7 @@
     $my_product = json_decode($my_product_json, true);
 
     $total_price = 0;
-    foreach ($my_cart as $item): $total_price += floatval($my_product[$item["id"]-1]["price"]);
+    foreach ($my_cart as $item): $total_price += floatval($my_product[$item["id"]-1]["price"])*$item["quantity"];
     endforeach;
 ?>
 
