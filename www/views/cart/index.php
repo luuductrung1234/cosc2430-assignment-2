@@ -8,7 +8,7 @@
     $my_product = json_decode($my_product_json, true);
 
     $total_price = 0;
-    foreach ($my_cart as $item): $total_price += floatval($my_product[$item["id"]-1]["price"]);
+    foreach ($my_cart as $item): $total_price += floatval($my_product[$item["id"]-1]["price"])*$item["quantity"];
     endforeach;
 ?>
 
@@ -23,7 +23,7 @@
                     <h6 class="mb-1 fw-bold">Shopping cart</h6>
                     <div class="d-flex justify-content-between"><span>You have <? echo count($my_cart) ?> items in your cart</span></div>
                         <div class="d-flex flex-row align-items-center"><span class="bold">Tocal price:</span>
-                            <div class="price ms-2"><span class="bold"><? echo "$".$total_price ?></span></div>
+                            <div class="price ms-2"><span class="bold"><? echo "$" . $total_price ?></span></div>
                         </div>
                     <?php foreach ($my_cart as $item): ?>
                     <div class="d-flex justify-content-between align-items-center mt-3 p-2 items rounded">
