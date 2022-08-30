@@ -37,12 +37,14 @@ require_once CONTROLLER_PATH . "RegisterController.php";
 require_once CONTROLLER_PATH . "ProfileController.php";
 require_once CONTROLLER_PATH . "ProductController.php";
 require_once CONTROLLER_PATH . "CartController.php";
+require_once CONTROLLER_PATH . "OrderController.php";
 require_once CONTROLLER_PATH . "ErrorController.php";
 
 use Controllers\CartController;
 use Controllers\CustomerController;
 use Controllers\ErrorController;
 use Controllers\LoginController;
+use Controllers\OrderController;
 use Controllers\ProductController;
 use Controllers\ProfileController;
 use Controllers\RegisterController;
@@ -73,6 +75,12 @@ $router
     ->post("/product", [ProductController::class, "submit"], VENDOR_ROLE)
     // cart
     ->get("/cart", [CartController::class, "index"])
+    // order
+    ->get("/order-delivery", [OrderController::class, "delivery"], SHIPPER_ROLE)
+    ->get("/order-cancel", [OrderController::class, "cancel"], SHIPPER_ROLE)
+    ->post("/order", [OrderController::class, "create"], CUSTOMER_ROLE)
+    ->get("/order", [CustomerController::class, "listOrder"], CUSTOMER_ROLE)
+    ->get("/order-detail", [OrderController::class, "detail"])
     // error
     ->get("/404", [ErrorController::class, "notfound"])
     ->get("/500", [ErrorController::class, "internalError"])

@@ -1,4 +1,20 @@
 updateCartQuantityNotification();
+updateNavLink();
+
+function updateNavLink() {
+    let navOrder = document.getElementById("nav-order");
+    let navHome = document.getElementById("nav-home");
+    if (!navOrder || !navHome)
+        return;
+    navOrder.classList.remove("active");
+    navHome.classList.remove("active");
+    let currentLocation = window.location.href;
+    if (currentLocation.endsWith("order")) {
+        document.getElementById("nav-order").classList.add("active");
+    }else {
+        document.getElementById("nav-home").classList.add("active");
+    }
+}
 
 function updateCartQuantityNotification() {
     if (document.getElementById("cart-quantity") === null)
@@ -14,7 +30,7 @@ function updateCartQuantityNotification() {
         quantity += item.quantity;
     }
     document.getElementById("cart-quantity").innerHTML = quantity >= 9 ? "9" : quantity;
-};
+}
 
 function onAddToCart(productId) {
     let cart = localStorage.getItem("cart");

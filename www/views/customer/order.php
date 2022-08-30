@@ -2,7 +2,7 @@
 
 /**
  * @var array $account
- * @var array $shipper
+ * @var array $customer
  * @var array $orders
  */
 ?>
@@ -35,32 +35,41 @@
                                         </thead>
                                         <tbody class="table-body text-center">
                                         <?php foreach ($orders as $order): ?>
+                                            <?php
+                                            $statusClass = "";
+                                            switch ($order["status"]) {
+                                                case "active":
+                                                {
+                                                    $statusClass = "bg-info";
+                                                    break;
+                                                }
+                                                case "delivered":
+                                                {
+                                                    $statusClass = "bg-success";
+                                                    break;
+                                                }
+                                                case "cancelled":
+                                                {
+                                                    $statusClass = "bg-danger";
+                                                    break;
+                                                }
+                                            }
+                                            ?>
                                             <tr class="order">
                                                 <td><?= $order["id"] ?></td>
                                                 <td><?= $order["customerName"] ?></td>
                                                 <td><?= $order["totalQuantity"] ?></td>
                                                 <td>$<?= number_format($order["totalAmount"], 2, '.', ',') ?></td>
-                                                <td class="order-status"><span
-                                                            class="badge bg-info"><?= $order["status"] ?></span></td>
+                                                <td class="order-status">
+                                                    <span class="badge <?= $statusClass ?>"><?= $order["status"] ?></span>
+                                                </td>
                                                 <td><?= date('M j, Y', strtotime($order["orderDate"]["date"])) ?></td>
                                                 <td>
                                                     <a href="/order-detail?id=<?= $order["id"] ?>"
-                                                       class="btn btn-outline-light btn-sm text-center shipper-btn"
+                                                       class="btn btn-outline-light btn-sm text-center order-btn"
                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="detail">
                                                         <img src="../../images/detail-icon.png" class="detail-img"
                                                              alt="delivery icon">
-                                                    </a>
-                                                    <a href="/order-delivery?id=<?= $order["id"] ?>"
-                                                       class="btn btn-outline-dark btn-sm text-center shipper-btn"
-                                                       data-bs-toggle="tooltip" data-bs-placement="top" title="delivery">
-                                                        <img src="../../images/delivery-icon.png" class="delivery-img"
-                                                             alt="delivery icon">
-                                                    </a>
-                                                    <a href="/order-cancel?id=<?= $order["id"] ?>"
-                                                       class="btn btn-outline-light btn-sm text-center shipper-btn"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="cancel">
-                                                        <img src="../../images/cancel-icon.png" class="cancel-img"
-                                                             alt="cancel icon">
                                                     </a>
                                                 </td>
                                             </tr>

@@ -66,6 +66,7 @@ class View
         $this->layoutData["_show_header"] = true;
         $this->layoutData["_show_footer"] = true;
         $this->layoutData["_show_cart"] = !empty($account) && $account["role"] === CUSTOMER_ROLE;
+        $this->layoutData["_show_order_history"] = !empty($account) && $account["role"] === CUSTOMER_ROLE;
         $this->layoutData["_styles"] = [];
         $this->layoutData["_scripts"] = [];
         $this->layoutData["_content"] = $viewContent;

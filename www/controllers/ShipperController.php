@@ -16,12 +16,13 @@ class ShipperController
     {
         $account = AuthenticationService::getAccount();
         $profile = DataAccessService::getProfile($account["profileId"], $account["role"]);
+        $orders = DataAccessService::getOrders($profile["distributionId"], "active");
         $viewData = [
             "_title" => "Shipper",
             "_avatar" => $profile["picture"],
-            "shipper" => [
-                "name" => "John"
-            ]
+            "account" => $account,
+            "shipper" => $profile,
+            "orders" => $orders
         ];
         return (string)View::make("shipper/index", $viewData);
     }

@@ -7,6 +7,7 @@
  * @var bool $_show_header
  * @var bool $_show_footer
  * @var bool $_show_cart
+ * @var bool $_show_order_history
  * @var string $_avatar
  */
 ?>
@@ -44,15 +45,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Lazada</a>
+                            <a id="nav-home" class="nav-link active" aria-current="page" href="/">Lazada</a>
                         </li>
+                        <?php if ($_show_order_history): ?>
+                            <li class="nav-item">
+                                <a id="nav-order" class="nav-link" aria-current="page" href="/order">Order History</a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-secondary btn-sm" type="submit"><img class="search-icon"
-                                                                                            src="../images/search-icon.png"
-                                                                                            alt="search icon"></button>
-                    </form>
                     <div class="navbar-side">
                         <?php if ($_show_cart): ?>
                             <div class="cart">

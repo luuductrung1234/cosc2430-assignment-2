@@ -20,6 +20,16 @@ a {
     font-weight: bold;
 }
 
+.register_checked:before {
+    content: "[";
+    color: #e59400;
+}
+
+.register_checked:after {
+    content: "]";
+    color: #e59400;
+}
+
 .disabled_button {
     color: currentColor;
     cursor: not-allowed;
@@ -55,9 +65,10 @@ a {
 }
 
 .register_col:hover {
-    transform: translateY(-20px);
+    transform: translateY(-10px);
     transition: all 0.4s;
     box-shadow: 10px 10px 5px #ddd;
+    color: #212529;
 }
 
 .register_button {

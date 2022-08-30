@@ -27,21 +27,21 @@ $_SESSION["selectedRole"] = $selectedRole;
         <div class="register_form">
             <form action="/register" method="POST" enctype="multipart/form-data">
                 <div class="register">
-                    <div class="register_label">user name<span class="color_red">*</span></div>
+                    <div class="register_label">Username<span class="color_red">*</span></div>
                     <div class="register_input">
                         <input type="text" name="username" id="username" onkeyup="verifyName()">
                     </div>
                     <div class="register_alert" id="username_alert"></div>
                 </div>
                 <div class="register">
-                    <div class="register_label">password<span class="color_red">*</span></div>
+                    <div class="register_label">Password<span class="color_red">*</span></div>
                     <div class="register_input">
                         <input type="password" name="password" id="password" onkeyup="verifyPassword()">
                     </div>
                     <div class="register_alert" id="password_alert"></div>
                 </div>
                 <div class="register">
-                    <div class="register_label">password confirm<span class="color_red">*</span></div>
+                    <div class="register_label">Password Confirm<span class="color_red">*</span></div>
                     <div class="register_input">
                         <input type="password" name="confirmedPassword" id="password_confirm" onkeyup="matchPassword()">
                     </div>
@@ -49,7 +49,7 @@ $_SESSION["selectedRole"] = $selectedRole;
                 </div>
                 <?php if (isset($selectedRole) && ($selectedRole === 'shipper' || $selectedRole === 'customer')): ?>
                     <div class="register">
-                        <div class="register_label">first name<span class="color_red">*</span>
+                        <div class="register_label">First Name<span class="color_red">*</span>
                         </div>
                         <div class="register_input">
                             <input type="text" name="firstname" id="firstname">
@@ -57,7 +57,7 @@ $_SESSION["selectedRole"] = $selectedRole;
                         <div class="register_alert"></div>
                     </div>
                     <div class="register">
-                        <div class="register_label">last name<span class="color_red">*</span>
+                        <div class="register_label">Last Name<span class="color_red">*</span>
                         </div>
                         <div class="register_input">
                             <input type="text" name="lastname" id="lastname">
@@ -65,7 +65,7 @@ $_SESSION["selectedRole"] = $selectedRole;
                         <div class="register_alert"></div>
                     </div>
                     <div class="register">
-                        <div class="register_label">address<span class="color_red">*</span>
+                        <div class="register_label">Address<span class="color_red">*</span>
                         </div>
                         <div class="register_input">
                             <input type="text" name="address" id="address">
@@ -74,14 +74,14 @@ $_SESSION["selectedRole"] = $selectedRole;
                     </div>
                 <?php elseif (isset($selectedRole) && $selectedRole === 'vendor'): ?>
                     <div class="register">
-                        <div class="register_label">business name<span class="color_red">*</span></div>
+                        <div class="register_label">Business Name<span class="color_red">*</span></div>
                         <div class="register_input">
                             <input type="text" name="businessName" id="business_name" require>
                         </div>
                         <div class="register_alert" id="business_name_alert"></div>
                     </div>
                     <div class="register">
-                        <div class="register_label">business address<span class="color_red">*</span></div>
+                        <div class="register_label">Business Address<span class="color_red">*</span></div>
                         <div class="register_input">
                             <input type="text" name="businessAddress" id="business_address" require>
                         </div>
@@ -90,7 +90,7 @@ $_SESSION["selectedRole"] = $selectedRole;
                 <?php endif; ?>
                 <?php if (isset($selectedRole) && $selectedRole === 'shipper'): ?>
                     <div class="register">
-                        <div class="register_label">distribution hub<span class="color_red">*</span>
+                        <div class="register_label">Distribution<span class="color_red">*</span>
                         </div>
                         <div class="register_input">
                             <select name="distribution" id="register_distribution_hub">
@@ -103,21 +103,21 @@ $_SESSION["selectedRole"] = $selectedRole;
                     </div>
                 <?php endif; ?>
                 <div class="register">
-                    <div class="register_label">email</div>
+                    <div class="register_label">Email</div>
                     <div class="register_input">
                         <input type="email" name="email" id="email">
                     </div>
                     <div class="register_alert"></div>
                 </div>
                 <div class="register">
-                    <div class="register_label">phone</div>
+                    <div class="register_label">Phone</div>
                     <div class="register_input">
                         <input type="number" name="phone" id="phone">
                     </div>
                     <div class="register_alert"></div>
                 </div>
                 <div class="register">
-                    <div class="register_label">profile picture</div>
+                    <div class="register_label">Picture</div>
                     <div class="register_input">
                         <input type="file" name="picture" id="profile" multiple accept="image/*">
                     </div>

@@ -2,13 +2,14 @@
 /**
  * @var array $profile
  * @var array $account
+ * @var array $distribution
  * @var bool $updateSuccess
  */
 ?>
 
 <?php if ($account["role"] != VENDOR_ROLE): ?>
     <form action="/profile" method="POST" enctype="multipart/form-data" class='container rounded bg-white mt-5 mb-5'>
-        <?php if($updateSuccess): ?>
+        <?php if ($updateSuccess): ?>
             <p class='alert alert-success'>update profile successfully.<p/>
         <?php endif ?>
         <div class='row'>
@@ -17,7 +18,9 @@
                     <img class='rounded-circle mt-5' id='photo' src='<?= "../../images/" . $profile["picture"] ?>'>
                     <span class='font-weight-bold'><?= $account["username"] ?></span>
                     <span class='text-black-50'><?= $profile["email"] ?></span>
-                    <a class="profile-logout-btn" href="/logout"><img class="profile-logout-icon" src="../../images/logout-icon.png" alt="logout icon"></a>
+                    <a class="profile-logout-btn" href="/logout"><img class="profile-logout-icon"
+                                                                      src="../../images/logout-icon.png"
+                                                                      alt="logout icon"></a>
                 </div>
             </div>
             <div class='col-md-5 border-right'>
@@ -28,25 +31,30 @@
                     <div class='row mt-2'>
                         <div class='col-md-6'>
                             <label class='content'>First Name</label>
-                            <input type='text' name="firstname" class='form-control' value='<?= $profile["firstname"] ?>' readonly>
+                            <input type='text' name="firstname" class='form-control'
+                                   value='<?= $profile["firstname"] ?>' readonly>
                         </div>
                         <div class='col-md-6'>
                             <label class='content'>Last Name</label>
-                            <input type='text' name="lastname" class='form-control' value='<?= $profile["lastname"] ?>' readonly>
+                            <input type='text' name="lastname" class='form-control' value='<?= $profile["lastname"] ?>'
+                                   readonly>
                         </div>
                     </div>
                     <div class='row mt-3'>
                         <div class='col-md-12'>
                             <label class='content'>Mobile Number</label>
-                            <input type='text' name="phone" class='form-control' value='<?= $profile["phone"] ?>' readonly>
+                            <input type='text' name="phone" class='form-control' value='<?= $profile["phone"] ?>'
+                                   readonly>
                         </div>
                         <div class='col-md-12'>
                             <label class='content'>Address</label>
-                            <input type='text' name="address" class='form-control' value='<?= $profile["address"] ?>' readonly>
+                            <input type='text' name="address" class='form-control' value='<?= $profile["address"] ?>'
+                                   readonly>
                         </div>
                         <div class='col-md-12'>
                             <label class='content'>Email</label>
-                            <input type='text' name="email" class='form-control' value='<?= $profile["email"] ?>' readonly>
+                            <input type='text' name="email" class='form-control' value='<?= $profile["email"] ?>'
+                                   readonly>
                         </div>
                     </div>
                     <div class='row mt-3'>
@@ -67,7 +75,15 @@
                         <span class='border px-3 p-1 user-type'><?= $account["role"] ?></span>
                     </div>
                     <br>
-                    <div class='col-md-12'>
+                    <?php if ($account["role"] == SHIPPER_ROLE && !is_null($distribution)): ?>
+                        <div class='col-md-12'>
+                            <label class='content'>Distribution</label>
+                            <input type='text' name="distribution" class='form-control'
+                                   value='<?= $distribution["name"] ?>'
+                                   readonly>
+                        </div>
+                    <?php endif; ?>
+                    <div class='col-md-12 mt-2'>
                         <label class='content'>User Bio</label>
                         <textarea name="bio" class='form-control' placeholder='bio'></textarea>
                     </div>
@@ -77,7 +93,7 @@
     </form>
 <?php else: ?>
     <form action="/profile" method="POST" enctype="multipart/form-data" class='container rounded bg-white mt-5 mb-5'>
-        <?php if($updateSuccess): ?>
+        <?php if ($updateSuccess): ?>
             <p class='alert alert-success'>update profile successfully.<p/>
         <?php endif ?>
         <div class='row'>
@@ -86,7 +102,9 @@
                     <img class='rounded-circle mt-5' id='photo' src='<?= "../../images/" . $profile["picture"] ?>'>
                     <span class='font-weight-bold'><?= $account["username"] ?></span>
                     <span class='text-black-50'><?= $profile["email"] ?></span>
-                    <a class="profile-logout-btn" href="/logout"><img class="profile-logout-icon" src="../../images/logout-icon.png" alt="logout icon"></a>
+                    <a class="profile-logout-btn" href="/logout"><img class="profile-logout-icon"
+                                                                      src="../../images/logout-icon.png"
+                                                                      alt="logout icon"></a>
                 </div>
             </div>
             <div class='col-md-5 border-right'>
@@ -97,21 +115,25 @@
                     <div class='row mt-3'>
                         <div class='col-md-12'>
                             <label class='content'>Business Name</label>
-                            <input type='text' name="businessName" class='form-control' value='<?= $profile["businessName"] ?>' readonly>
+                            <input type='text' name="businessName" class='form-control'
+                                   value='<?= $profile["businessName"] ?>' readonly>
                         </div>
                     </div>
                     <div class='row mt-3'>
                         <div class='col-md-12'>
                             <label class='content'>Mobile Number</label>
-                            <input type='text' name="phone" class='form-control' value='<?= $profile["phone"] ?>' readonly>
+                            <input type='text' name="phone" class='form-control' value='<?= $profile["phone"] ?>'
+                                   readonly>
                         </div>
                         <div class='col-md-12'>
                             <label class='content'>Address</label>
-                            <input type='text' name="businessAddress" class='form-control' value='<?= $profile["businessAddress"] ?>' readonly>
+                            <input type='text' name="businessAddress" class='form-control'
+                                   value='<?= $profile["businessAddress"] ?>' readonly>
                         </div>
                         <div class='col-md-12'>
                             <label class='content'>Email</label>
-                            <input type='text' name="email" class='form-control' value='<?= $profile["email"] ?>' readonly>
+                            <input type='text' name="email" class='form-control' value='<?= $profile["email"] ?>'
+                                   readonly>
                         </div>
                     </div>
                     <div class='row mt-3'>

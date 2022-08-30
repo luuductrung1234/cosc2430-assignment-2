@@ -21,13 +21,17 @@ class DataAccessService
     // PRODUCT
     // =========================================================
 
-    public static function getProducts(?int $vendorId = null, ?string $name = null): ?array
+    public static function getProducts(?int $vendorId = null, ?string $name = null, ?float $fromPrice = null, ?float $toPrice = null): ?array
     {
         $products = self::loadProducts();
         if (!is_null($vendorId))
             $products = array_values(array_filter($products, fn($a) => $a["vendorId"] == $vendorId));
         if (!is_null($name))
-            $products = array_values(array_filter($products, fn($a) => $a["name"] == $name));
+            $products = array_values(array_filter($products, fn($a) => str_contains(strtolower($a["name"]), strtolower($name))));
+        if (!is_null($fromPrice))
+            $products = array_values(array_filter($products, fn($a) => $a["price"] >= $fromPrice));
+        if (!is_null($toPrice))
+            $products = array_values(array_filter($products, fn($a) => $a["price"] <= $toPrice));
         return $products;
     }
 
@@ -67,7 +71,7 @@ class DataAccessService
         $product = array_values(array_filter($products, fn($p) => $p["id"] == $id));
         $product = empty($product) ? null : $product[0];
         if (is_null($product)) return null;
-       
+
         $vendor = self::getProfile($product["vendorId"], VENDOR_ROLE);
         $product["vendorName"] = $vendor["businessName"];
         $product["vendorAddress"] = $vendor["businessAddress"];
@@ -142,6 +146,100 @@ class DataAccessService
     }
 
     // =========================================================
+    // ORDER
+    // =========================================================
+
+    public static function getOrders(?int $distributionId = null, ?string $status = null): ?array
+    {
+        $orders = self::loadOrders();
+        if (!is_null($distributionId))
+            $orders = array_values(array_filter($orders, fn($a) => $a["distributionId"] == $distributionId));
+        if (!is_null($status))
+            $orders = array_values(array_filter($orders, fn($a) => $a["status"] == $status));
+
+        $customers = self::loadProfiles(CUSTOMER_ROLE);
+        foreach ($orders as &$order) {
+            $order["totalAmount"] = array_reduce($order["items"], fn($total, $item) => $total += $item["price"]);
+            $order["totalQuantity"] = array_reduce($order["items"], fn($total, $item) => $total += $item["quantity"]);
+            
+            $customer = array_values(array_filter($customers, fn($c) => $c["id"] == $order["customerId"]));
+            $customer = empty($customer) ? null : $customer[0];
+            if (is_null($customer)) continue;
+            $order["customerName"] = $customer["firstname"] . $customer["lastname"];
+        }
+        return $orders;
+    }
+
+    public static function getOrder(int $id): ?array
+    {
+        $orders = self::loadOrders();
+        $order = array_values(array_filter($orders, fn($o) => $o["id"] == $id));
+        $order = empty($order) ? null : $order[0];
+        if (is_null($order)) return null;
+
+        $order["totalAmount"] = array_reduce($order["items"], fn($total, $item) => $total += $item["price"]);
+        
+        $customers = self::loadProfiles(CUSTOMER_ROLE);
+        $customer = array_values(array_filter($customers, fn($c) => $c["id"] == $order["customerId"]));
+        $customer = empty($customer) ? null : $customer[0];
+        if (is_null($customer)) return null;
+        $order["customerName"] = $customer["name"];
+        $order["customerAddress"] = $customer["address"];
+        $order["customerPhone"] = $customer["phone"];
+
+        $products = self::loadProducts();
+        foreach ($order["items"] as &$item) {
+            $product = array_values(array_filter($products, fn($p) => $p["id"] == $item["productId"]));
+            $product = empty($product) ? null : $product[0];
+            if (is_null($product)) continue;
+            $item["name"] = $product["name"];
+            $item["pictures"] = $product["pictures"];
+            $item["description"] = $product["description"];
+        }
+        return $order;
+    }
+    
+    public static function updateOrder(int $id, array $data): ?array
+    {
+        $orders = self::loadOrders();
+        foreach ($orders as &$orderToUpdate) {
+            if ($orderToUpdate["id"] === $id) {
+                foreach ($data as $fieldName => $fieldValue) {
+                    $orderToUpdate[$fieldName] = $fieldValue;
+                }
+                self::saveOrders($orders);
+                return $orderToUpdate;
+            }
+        }
+        return null;
+    }
+    
+    public static function addOrder(array $order): ?array
+    {
+        $orders = self::loadOrders();
+        self::saveOrders($orders);
+        return $order;
+    }
+    
+    // =========================================================
+    // DISTRIBUTION
+    // =========================================================
+
+    public static function getDistribution(int $id): ?array
+    {
+        $distributions = self::loadDistributions();
+        $distribution = array_values(array_filter($distributions, fn($d) => $d["id"] == $id));
+        return empty($distribution) ? null : $distribution[0];
+    }
+    
+    public static function getRandomDistribution(): ?array
+    {
+        $distributions = self::loadDistributions();
+        $distribution = array_rand($distributions);
+        return empty($distribution) ? null : $distribution[0];
+    }
+
+    // =========================================================
     // PRIVATE HELPERS
     // =========================================================
 
@@ -201,5 +299,11 @@ class DataAccessService
     {
         $orderData = json_encode($orders);
         file_put_contents(DATA_PATH . "order.db", $orderData);
+    }
+    
+    private static function loadDistributions(): array
+    {
+        $distributionData = file_get_contents(DATA_PATH . "distribution.db");
+        return (array)json_decode($distributionData, true);
     }
 }
