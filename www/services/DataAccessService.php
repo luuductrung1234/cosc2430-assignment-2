@@ -161,11 +161,11 @@ class DataAccessService
         foreach ($orders as &$order) {
             $order["totalAmount"] = array_reduce($order["items"], fn($total, $item) => $total += $item["price"]);
             $order["totalQuantity"] = array_reduce($order["items"], fn($total, $item) => $total += $item["quantity"]);
-            
+
             $customer = array_values(array_filter($customers, fn($c) => $c["id"] == $order["customerId"]));
             $customer = empty($customer) ? null : $customer[0];
             if (is_null($customer)) continue;
-            $order["customerName"] = $customer["firstname"] . $customer["lastname"];
+            $order["customerName"] = $customer["firstname"] . " " . $customer["lastname"];
         }
         return $orders;
     }
@@ -178,14 +178,21 @@ class DataAccessService
         if (is_null($order)) return null;
 
         $order["totalAmount"] = array_reduce($order["items"], fn($total, $item) => $total += $item["price"]);
-        
-        $customers = self::loadProfiles(CUSTOMER_ROLE);
-        $customer = array_values(array_filter($customers, fn($c) => $c["id"] == $order["customerId"]));
-        $customer = empty($customer) ? null : $customer[0];
+
+        $customer = self::getProfile($order["customerId"], CUSTOMER_ROLE);
         if (is_null($customer)) return null;
-        $order["customerName"] = $customer["name"];
+        $order["customerName"] = $customer["firstname"] . " " . $customer["lastname"];
         $order["customerAddress"] = $customer["address"];
         $order["customerPhone"] = $customer["phone"];
+        
+        $distribution = self::getDistribution($order["distributionId"]);
+        if (is_null($distribution)) return null;
+        $order["distributionName"] = $distribution["name"];
+
+        if (!is_null($order["shipperId"])) {
+            $shipper = self::getProfile($order["shipperId"], SHIPPER_ROLE);
+            $order["shipperName"] = $shipper["firstname"] . " " . $shipper["lastname"];
+        }
 
         $products = self::loadProducts();
         foreach ($order["items"] as &$item) {
@@ -198,7 +205,7 @@ class DataAccessService
         }
         return $order;
     }
-    
+
     public static function updateOrder(int $id, array $data): ?array
     {
         $orders = self::loadOrders();
@@ -213,14 +220,21 @@ class DataAccessService
         }
         return null;
     }
-    
+
     public static function addOrder(array $order): ?array
     {
         $orders = self::loadOrders();
+        $orders[] = $order;
         self::saveOrders($orders);
         return $order;
     }
     
+    public static function getNextOrderId(): int
+    {
+        $orders = self::loadOrders();
+        return count($orders) + 1;
+    }
+
     // =========================================================
     // DISTRIBUTION
     // =========================================================
@@ -231,12 +245,13 @@ class DataAccessService
         $distribution = array_values(array_filter($distributions, fn($d) => $d["id"] == $id));
         return empty($distribution) ? null : $distribution[0];
     }
-    
+
     public static function getRandomDistribution(): ?array
     {
         $distributions = self::loadDistributions();
-        $distribution = array_rand($distributions);
-        return empty($distribution) ? null : $distribution[0];
+        if(empty($distributions)) return null;
+        $randomIndex = array_rand($distributions);
+        return $distributions[$randomIndex];
     }
 
     // =========================================================
@@ -300,7 +315,7 @@ class DataAccessService
         $orderData = json_encode($orders);
         file_put_contents(DATA_PATH . "order.db", $orderData);
     }
-    
+
     private static function loadDistributions(): array
     {
         $distributionData = file_get_contents(DATA_PATH . "distribution.db");

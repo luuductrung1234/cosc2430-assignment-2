@@ -84,7 +84,7 @@
         <nav class="footer-nav">
             <ul class="footer-nav-items">
                 <li class="footer-nav-item"><a href="#">About Us</a></li>
-                <li class="footer-nav-item"><a href="#">Contact Us</a></li>
+                <li class="footer-nav-item"><a href="#">Helps</a></li>
             </ul>
         </nav>
         <nav class="footer-nav">

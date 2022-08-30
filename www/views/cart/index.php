@@ -10,7 +10,6 @@ foreach ($my_cart as $item): $total_price += floatval($my_product[$item["id"] - 
 endforeach;
 ?>
 
-<div id="localStorage-var"></div>
 <div class="container mt-4 p-3 rounded card d-flex">
     <div class="row no-gutters">
         <div class="col-12">
@@ -26,7 +25,7 @@ endforeach;
                 <hr>
                 <h6 class="mb-1 fw-bold">Shopping cart</h6>
                 <div class="d-flex justify-content-between text-muted">
-                    <span>You have <?= count($my_cart) ?> different items in your cart</span>
+                    <span>You have <?= count($my_cart) ?> different item(s) in your cart</span>
                 </div>
                 <div class="d-flex flex-row align-items-center"><span class="bold">Total amount:</span>
                     <div class="price ms-2">
@@ -64,7 +63,7 @@ endforeach;
                     </div>
                 </div>
                 <form action="/order" method="POST" class="d-flex flex-row-reverse mt-3">
-                    <button class="btn place-order-btn ms-5" type="submit">Place Order</button>
+                    <button id="placeOrderBtn" class="btn place-order-btn ms-5" type="submit" onclick="clearCart()">Place Order</button>
                 </form>
             </div>
         </div>
