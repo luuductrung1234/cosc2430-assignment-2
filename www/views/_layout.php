@@ -56,7 +56,7 @@
                     <div class="navbar-side">
                         <?php if ($_show_cart): ?>
                             <div class="cart">
-                                <a class="cart-btn" href="/cart">
+                                <a id="cartBtn" class="cart-btn" href="/cart" onclick="openCart()">
                                     <img class="cart-img" src="../images/cart-icon.png" alt="shopping cart"/>
                                 </a>
                                 <span id="cart-quantity" class="notified-quantity">0</span>

@@ -11,7 +11,7 @@ function updateNavLink() {
     let currentLocation = window.location.href;
     if (currentLocation.endsWith("order")) {
         document.getElementById("nav-order").classList.add("active");
-    }else {
+    } else {
         document.getElementById("nav-home").classList.add("active");
     }
 }
@@ -51,4 +51,22 @@ function onAddToCart(productId) {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartQuantityNotification();
+}
+
+function openCart() {
+    let cart = localStorage.getItem("cart");
+    if (cart === null)
+        return;
+    console.log(cart);
+    setCookie('cart', cart, 1);
+}
+
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
