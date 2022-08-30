@@ -184,6 +184,10 @@ class DataAccessService
         $order["customerName"] = $customer["firstname"] . " " . $customer["lastname"];
         $order["customerAddress"] = $customer["address"];
         $order["customerPhone"] = $customer["phone"];
+        
+        $distribution = self::getDistribution($order["distributionId"]);
+        if (is_null($distribution)) return null;
+        $order["distributionName"] = $distribution["name"];
 
         if (!is_null($order["shipperId"])) {
             $shipper = self::getProfile($order["shipperId"], SHIPPER_ROLE);
@@ -220,8 +224,15 @@ class DataAccessService
     public static function addOrder(array $order): ?array
     {
         $orders = self::loadOrders();
+        $orders[] = $order;
         self::saveOrders($orders);
         return $order;
+    }
+    
+    public static function getNextOrderId(): int
+    {
+        $orders = self::loadOrders();
+        return count($orders) + 1;
     }
 
     // =========================================================
@@ -238,8 +249,9 @@ class DataAccessService
     public static function getRandomDistribution(): ?array
     {
         $distributions = self::loadDistributions();
-        $distribution = array_rand($distributions);
-        return empty($distribution) ? null : $distribution[0];
+        if(empty($distributions)) return null;
+        $randomIndex = array_rand($distributions);
+        return $distributions[$randomIndex];
     }
 
     // =========================================================

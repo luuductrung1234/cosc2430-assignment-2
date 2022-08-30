@@ -10,7 +10,6 @@ foreach ($my_cart as $item): $total_price += floatval($my_product[$item["id"] - 
 endforeach;
 ?>
 
-<div id="localStorage-var"></div>
 <div class="container mt-4 p-3 rounded card d-flex">
     <div class="row no-gutters">
         <div class="col-12">
@@ -64,7 +63,7 @@ endforeach;
                     </div>
                 </div>
                 <form action="/order" method="POST" class="d-flex flex-row-reverse mt-3">
-                    <button class="btn place-order-btn ms-5" type="submit">Place Order</button>
+                    <button id="placeOrderBtn" class="btn place-order-btn ms-5" type="submit" onclick="clearCart()">Place Order</button>
                 </form>
             </div>
         </div>

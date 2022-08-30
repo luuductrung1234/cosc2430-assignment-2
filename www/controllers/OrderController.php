@@ -44,29 +44,30 @@ class OrderController
      */
     public function create(): string
     {
-        $cart = $_COOKIE["cart"];
+        $cart = json_decode($_COOKIE["cart"]);
         if (empty($cart)) {
             header("Location: /");
             exit();
         }
         $orderItems = [];
         foreach ($cart as $item) {
-            $product = DataAccessService::getProduct($item["id"]);
+            $product = DataAccessService::getProduct($item->id);
             $orderItems[] = [
-                "productId" => $item["id"],
+                "productId" => $item->id,
                 "price" => $product["price"],
-                "quantity" => $item["quantity"],
+                "quantity" => $item->quantity,
             ];
         }
 
         $account = AuthenticationService::getAccount();
         $profile = DataAccessService::getProfile($account["profileId"], $account["role"]);
+        $distribution = DataAccessService::getRandomDistribution();
 
         $order = [
-            "id" => DataAccessService::getNextProductId(),
+            "id" => DataAccessService::getNextOrderId(),
             "status" => "active",
             "customerId" => $profile["id"],
-            "distributionId" => DataAccessService::getRandomDistribution() ?? null,
+            "distributionId" => !is_null($distribution) ? $distribution["id"] : null,
             "shipperId" => null,
             "orderDate" => new DateTime('now', new DateTimeZone('Asia/Ho_Chi_Minh')),
             "items" => $orderItems

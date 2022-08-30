@@ -51,6 +51,10 @@ switch ($order["status"]) {
         <span class="text-muted">date:&nbsp;&nbsp;&nbsp;</span>
         <span class="bold"><?= date('M j, Y', strtotime($order["orderDate"]["date"])) ?></span>
     </div>
+    <div class="d-flex flex-row align-items-center mt-2">
+        <span class="text-muted">stored and handled by&nbsp;</span>
+        <span class="bold"><?= $order["distributionName"] ?></span>
+    </div>
     <?php if (!empty($order["shipperName"])): ?>
         <div class="d-flex flex-row align-items-center mt-2">
             <span class="bold">delivered by&nbsp;</span>

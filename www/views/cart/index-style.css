@@ -63,3 +63,10 @@ background: none;
   background-color: #e59400;
   color: #eee;
 }
+
+.disabled_button {
+  color: currentColor;
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
