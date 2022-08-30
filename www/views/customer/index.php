@@ -38,11 +38,11 @@
                                                    value="<?= $oldToPrice ?? "" ?>" aria-label="To Price">
                                         </div>
                                         <div class="col-sm-12 col-md-2 search-btn-list">
-                                            <button class="btn btn-outline-secondary btn-sm search-btn" type="submit">
+                                            <button class="btn btn-outline-light btn-sm search-btn" type="submit">
                                                 <img class="search-icon" src="../../images/search-icon.png"
                                                      alt="search icon">
                                             </button>
-                                            <button class="btn btn-outline-secondary btn-sm search-btn" type="submit" onclick="resetForm()">
+                                            <button class="btn btn-outline-light btn-sm search-btn" type="submit" onclick="resetForm()">
                                                 <img class="search-icon" src="../../images/reset-icon.png"
                                                      alt="reset icon">
                                             </button>
