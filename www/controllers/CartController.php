@@ -14,6 +14,11 @@ class CartController
 {
     public function index(): string
     {
+        if(!isset($_COOKIE["cart"])) {
+            header("Location: /");
+            exit();
+        }
+            
         $account = AuthenticationService::getAccount();
         $profile = DataAccessService::getProfile($account["profileId"], $account["role"]);
         $products = DataAccessService::getProducts();

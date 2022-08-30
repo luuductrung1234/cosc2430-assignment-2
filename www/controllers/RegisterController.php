@@ -39,12 +39,6 @@ class RegisterController
     
     /// this function run when click continue ///
     public function register(): void {
-        $viewData = [
-            "_title" => "Register Success",
-            "_show_header" => false,
-            "_show_footer" => false
-        ];
-
         if ($_SESSION["selectedRole"] == "vendor"){
             $this->validateVendor();
         }else if ($_SESSION["selectedRole"] == "shipper"){

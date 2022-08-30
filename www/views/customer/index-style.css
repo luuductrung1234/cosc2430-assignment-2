@@ -1,3 +1,11 @@
+/* FILTERS */
+
+.search-btn {
+    height: 100%;
+    /*padding-left: 12px;*/
+    /*padding-right: 12px;*/
+}
+
 /* CARD */
 
 .card-body {
@@ -49,4 +57,20 @@
 
 .card-price:hover {
     text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .form-control {
+        margin-bottom: 10px;
+    }
+
+    .search-btn {
+        height: inherit;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+   
+    .search-btn-list .search-btn:last-child {
+        margin-bottom: 0px;
+    }
 }

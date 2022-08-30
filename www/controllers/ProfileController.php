@@ -16,11 +16,15 @@ class ProfileController
     {
         $account = AuthenticationService::getAccount();
         $profile = DataAccessService::getProfile($account["profileId"], $account["role"]);
+        $distribution = null;
+        if ($account["role"] == SHIPPER_ROLE)
+            $distribution = DataAccessService::getDistribution($profile["distributionId"]);
         $viewData = [
             "_title" => "Profile",
             "_avatar" => $profile["picture"],
             "account" => $account,
             "profile" => $profile,
+            "distribution" => $distribution,
             "updateSuccess" => $updateSuccess ?? false
         ];
         return (string)View::make("profile/index", $viewData);
@@ -34,7 +38,7 @@ class ProfileController
         if (is_null($newFileName)) {
             return $this->index(false);
         }
-        
+
         DataAccessService::updateProfile($account["profileId"], $account["role"], [
             "picture" => $newFileName
         ]);
@@ -46,7 +50,7 @@ class ProfileController
         if (!isset($_FILES["picture"]) || empty($_FILES["picture"]["name"])) {
             return null;
         }
-        
+
         if (is_file(IMAGE_PATH . $profile["picture"])) {
             // delete old picture
             unlink(IMAGE_PATH . $profile["picture"]);
