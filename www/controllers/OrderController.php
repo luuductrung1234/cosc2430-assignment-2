@@ -32,6 +32,7 @@ class OrderController
         $viewData = [
             "_title" => "Order Detail",
             "_avatar" => $profile["picture"],
+            "account" => $account,
             "profile" => $profile,
             "order" => $order
         ];

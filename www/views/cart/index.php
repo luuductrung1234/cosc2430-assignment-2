@@ -26,7 +26,7 @@ endforeach;
                 <hr>
                 <h6 class="mb-1 fw-bold">Shopping cart</h6>
                 <div class="d-flex justify-content-between text-muted">
-                    <span>You have <?= count($my_cart) ?> different items in your cart</span>
+                    <span>You have <?= count($my_cart) ?> different item(s) in your cart</span>
                 </div>
                 <div class="d-flex flex-row align-items-center"><span class="bold">Total amount:</span>
                     <div class="price ms-2">
