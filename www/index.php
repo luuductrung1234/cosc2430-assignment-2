@@ -38,6 +38,7 @@ require_once CONTROLLER_PATH . "ProfileController.php";
 require_once CONTROLLER_PATH . "ProductController.php";
 require_once CONTROLLER_PATH . "CartController.php";
 require_once CONTROLLER_PATH . "OrderController.php";
+require_once CONTROLLER_PATH . "StaticController.php";
 require_once CONTROLLER_PATH . "ErrorController.php";
 
 use Controllers\CartController;
@@ -49,6 +50,7 @@ use Controllers\ProductController;
 use Controllers\ProfileController;
 use Controllers\RegisterController;
 use Controllers\ShipperController;
+use Controllers\StaticController;
 use Controllers\VendorController;
 use SeedWork\Exceptions\RouteNotFoundException;
 use SeedWork\Router;
@@ -81,6 +83,11 @@ $router
     ->post("/order", [OrderController::class, "create"], CUSTOMER_ROLE)
     ->get("/order", [CustomerController::class, "listOrder"], CUSTOMER_ROLE)
     ->get("/order-detail", [OrderController::class, "detail"])
+    // static
+    ->get("/about", [StaticController::class, "about"])
+    ->get("/policy", [StaticController::class, "policy"])
+    ->get("/helps", [StaticController::class, "helps"])
+    ->get("/contact", [StaticController::class, "contact"])
     // error
     ->get("/404", [ErrorController::class, "notfound"])
     ->get("/500", [ErrorController::class, "internalError"])

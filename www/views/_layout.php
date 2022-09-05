@@ -83,14 +83,14 @@
         </div>
         <nav class="footer-nav">
             <ul class="footer-nav-items">
-                <li class="footer-nav-item"><a href="#">About Us</a></li>
-                <li class="footer-nav-item"><a href="#">Helps</a></li>
+                <li class="footer-nav-item"><a href="/about">About Us</a></li>
+                <li class="footer-nav-item"><a href="/helps">Helps</a></li>
             </ul>
         </nav>
         <nav class="footer-nav">
             <ul class="footer-nav-items">
-                <li class="footer-nav-item"><a href="#">Privacy Policy</a></li>
-                <li class="footer-nav-item"><a href="#">Terms</a></li>
+                <li class="footer-nav-item"><a href="/contact">Contact</a></li>
+                <li class="footer-nav-item"><a href="/policy">Privacy Policy</a></li>
             </ul>
         </nav>
     </footer>
