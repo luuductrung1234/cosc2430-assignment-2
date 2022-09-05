@@ -26,12 +26,15 @@ class DataAccessService
         $products = self::loadProducts();
         if (!is_null($vendorId))
             $products = array_values(array_filter($products, fn($a) => $a["vendorId"] == $vendorId));
-        if (!is_null($name))
+        if (!empty($name)) {
             $products = array_values(array_filter($products, fn($a) => str_contains(strtolower($a["name"]), strtolower($name))));
-        if (!is_null($fromPrice))
+        }
+        if (!is_null($fromPrice)) {
             $products = array_values(array_filter($products, fn($a) => $a["price"] >= $fromPrice));
-        if (!is_null($toPrice))
+        }
+        if (!is_null($toPrice)) {
             $products = array_values(array_filter($products, fn($a) => $a["price"] <= $toPrice));
+        }
         return $products;
     }
 
