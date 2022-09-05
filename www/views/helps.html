@@ -1,134 +1,129 @@
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="helps-style.css">
-</head>
-
-<body>
-    <div class="container mt-4">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-9">
-                <div class="card p-4 mt-3">
-                    <h3 class="heading mt-5 text-center">What do you need help with?</h3>
-                    <div class="d-flex justify-content-center px-5">
-                        <div class="search"> <input type="text" class="search-input" placeholder="Search..." name=""> <a
-                                href="#" class="search-icon"> </a> </div>
-                    </div>
-                    <div class="row mt-4 g-1 px-4 mb-5">
-                        <div class="col-md-2">
-                            <div class="card-inner p-3 d-flex flex-column align-items-center" data-bs-toggle="collapse"
-                                href="#account" role="button" aria-expanded="false" aria-controls="account"> <img
-                                    src="/www/images/account.png" width="50">
-                                <div class="text-center mg-text"> <span class="mg-text">Account</span> </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="card-inner p-3 d-flex flex-column align-items-center" data-bs-toggle="collapse"
-                                href="#payments" role="button" aria-expanded="false" aria-controls="payments"> <img
-                                    src="/www/images/payment.png" width="50">
-                                <div class="text-center mg-text"> <span class="mg-text">Payments</span> </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="card-inner p-3 d-flex flex-column align-items-center" data-bs-toggle="collapse"
-                            href="#deliveries" role="button" aria-expanded="false" aria-controls="deliveries"> <img
-                                    src="/www/images/delivery.png" width="50">
-                                <div class="text-center mg-text"> <span class="mg-text">Delivery</span> </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="card-inner p-3 d-flex flex-column align-items-center" data-bs-toggle="collapse"
-                            href="#products" role="button" aria-expanded="false" aria-controls="products"> <img
-                                    src="/www/images/package.png" width="50">
-                                <div class="text-center mg-text"> <span class="mg-text">Product</span> </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="card-inner p-3 d-flex flex-column align-items-center" data-bs-toggle="collapse"
-                            href="#return" role="button" aria-expanded="false" aria-controls="return"> <img
-                                    src="/www/images/return-box.png" width="50">
-                                <div class="text-center mg-text"> <span class="mg-text">Return</span> </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="card-inner p-3 d-flex flex-column align-items-center" data-bs-toggle="collapse"
-                            href="#other" role="button" aria-expanded="false" aria-controls="other"> <img
-                                    src="/www/images/other.png" width="50">
-                                <div class="text-center mg-text"> <span class="mg-text">Other</span> </div>
+<div class="container mt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-9">
+            <div class="card p-4 mt-3">
+                <h3 class="heading mt-5 text-center">What do you need help with?</h3>
+                <div class="d-flex justify-content-center px-5">
+                    <div class="search">
+                        <input type="text" class="search-input" placeholder="Search..." name="">
+                        <a href="#" class="search-icon"> </a></div>
+                </div>
+                <div class="row mt-4 g-1 px-4 mb-5">
+                    <div class="col-md-2">
+                        <div class="card-inner p-3 d-flex flex-column align-items-center" data-bs-toggle="collapse"
+                             href="#account" role="button" aria-expanded="false" aria-controls="account">
+                            <img class="card-inner-img" src="../images/account.png" alt="account icon">
+                            <div class="text-center mg-text">
+                                <span class="mg-text">Account</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div class="collapse" id="account">
-                            <div class="card card-body text-start">
-                                <strong>What can I access when I login?</strong> <br>
-                                Different types of users have different types of login UI
-                                <br> <br>
-                                <strong>Customer:</strong> can view and buy products
-                                <br> <br>
-                                <strong>Vendor:</strong> can upload and sell products
-                                <br> <br>
-                                <strong>Shipper:</strong> can view order details and approve delivery
+                    <div class="col-md-2">
+                        <div class="card-inner p-3 d-flex flex-column align-items-center" data-bs-toggle="collapse"
+                             href="#payments" role="button" aria-expanded="false" aria-controls="payments">
+                            <img class="card-inner-img" src="../images/payment.png" alt="wallet icon">
+                            <div class="text-center mg-text">
+                                <span class="mg-text">Payments</span>
                             </div>
                         </div>
-
-                        <div class="collapse" id="payments">
-                            <div class="card card-body text-start">
-                                <strong>What cards do you accept?</strong> <br>
-
-                                International or Vietnamese Debit cards. Vietnamese Credit cards that is from a well know bank etc. Vietcombank
-                                <br> <br>
-                                If you are not sure, then contact us.
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card-inner p-3 d-flex flex-column align-items-center" data-bs-toggle="collapse"
+                             href="#deliveries" role="button" aria-expanded="false" aria-controls="deliveries">
+                            <img class="card-inner-img" src="../images/delivery.png" alt="car running icon">
+                            <div class="text-center mg-text">
+                                <span class="mg-text">Delivery</span>
                             </div>
                         </div>
-
-                        <div class="collapse" id="deliveries">
-                            <div class="card card-body text-start">
-                                <strong>How long is my order?</strong> <br>
-
-                                Within 2-3 days
-                                <br> <br>
-                                If it's longer, then contact us.
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card-inner p-3 d-flex flex-column align-items-center" data-bs-toggle="collapse"
+                             href="#products" role="button" aria-expanded="false" aria-controls="products">
+                            <img class="card-inner-img" src="../images/package.png" alt="opened box icon">
+                            <div class="text-center mg-text">
+                                <span class="mg-text">Product</span>
                             </div>
                         </div>
-
-                        <div class="collapse" id="products">
-                            <div class="card card-body text-start">
-                                <strong>Cancelling order</strong> <br>
-
-                                Contact the vendor and shipper
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card-inner p-3 d-flex flex-column align-items-center" data-bs-toggle="collapse"
+                             href="#return" role="button" aria-expanded="false" aria-controls="return">
+                            <img class="card-inner-img" src="../images/return-box.png" alt="box with arrow icon">
+                            <div class="text-center mg-text">
+                                <span class="mg-text">Return</span>
                             </div>
                         </div>
-
-                        <div class="collapse" id="return">
-                            <div class="card card-body text-start">
-                                <strong>Returning a product</strong> <br>
-
-                                Must have proofs or reasons of returning product
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card-inner p-3 d-flex flex-column align-items-center" data-bs-toggle="collapse"
+                             href="#other" role="button" aria-expanded="false" aria-controls="other">
+                            <img class="card-inner-img" src="../images/other.png" alt="three dots icon">
+                            <div class="text-center mg-text">
+                                <span class="mg-text">Other</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="collapse" id="account">
+                        <div class="card card-body text-start">
+                            <strong>What can I access when I login?</strong> <br>
+                            Different types of users have different types of login UI
+                            <br> <br>
+                            <strong>Customer:</strong> can view and buy products
+                            <br> <br>
+                            <strong>Vendor:</strong> can upload and sell products
+                            <br> <br>
+                            <strong>Shipper:</strong> can view order details and approve delivery
+                        </div>
+                    </div>
 
-                        <div class="collapse" id="other">
-                            <div class="card card-body text-start">
-                                <strong>Does your website ship internationaly?</strong> <br>
+                    <div class="collapse" id="payments">
+                        <div class="card card-body text-start">
+                            <strong>What cards do you accept?</strong> <br>
 
-                                No. We only ship locally in Vietnam only.
-                            </div>
+                            International or Vietnamese Debit cards. Vietnamese Credit cards that is from a well know
+                            bank etc. Vietcombank
+                            <br> <br>
+                            If you are not sure, then contact us.
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="deliveries">
+                        <div class="card card-body text-start">
+                            <strong>How long is my order?</strong> <br>
+
+                            Within 2-3 days
+                            <br> <br>
+                            If it's longer, then contact us.
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="products">
+                        <div class="card card-body text-start">
+                            <strong>Cancelling order</strong> <br>
+
+                            Contact the vendor and shipper
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="return">
+                        <div class="card card-body text-start">
+                            <strong>Returning a product</strong> <br>
+
+                            Must have proofs or reasons of returning product
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="other">
+                        <div class="card card-body text-start">
+                            <strong>Does your website ship internationaly?</strong> <br>
+
+                            No. We only ship locally in Vietnam only.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-
-</html>
+</div>

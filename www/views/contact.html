@@ -1,63 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<section>
+    <!--Form START-->
+    <form>
+        <div class="container">
+            <div class="contactBox">
+                <div class="ContainerLeft"></div>
+                <div class="ContainerRight">
+                    <h2>Contact Us</h2>
+                    <br>
+                    <div class="dropSelector">
+                        <select required>
+                            <option value="reason" disabled selected>Select reasons</option>
+                            <option value="sell">Delivery, order or return</option>
+                            <option value="buy">Payment methods</option>
+                            <option value="feed">User account</option>
+                            <option value="feed">Accessibility</option>
+                            <option value="other">Something else</option>
+                        </select>
+                        <span class="arrow"></span>
+                    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <link rel="stylesheet" href="contact-style.css">
-</head>
+                    <input type="text" class="field" placeholder="Your Name" required>
 
-<body>
-    <section>
-        <!--Form START-->
-        <form>
-            <div class="container">
-                <div class="contactBox">
-                    <div class="ContainerLeft"></div>
-                    <div class="ContainerRight">
-                        <h2>Contact Us</h2>
-                        <br>
-                        <div class="dropSelector">
-                            <select required>
-                                <option value="reason" disabled selected>Select reasons</option>
-                                <option value="sell">Delivery, order or return</option>
-                                <option value="buy">Payment methods</option>
-                                <option value="feed">User account</option>
-                                <option value="feed">Accessibility</option>
-                                <option value="other">Something else</option>
-                            </select>
-                            <span class="arrow"></span>
-                        </div>
+                    <div class="preferred-contact">
+                        <h3>Preferred contact methods</h3>
+                        <label class="radio-inline">
+                            <input type="radio" name="preferred-contact" value="1">Email
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="preferred-contact" value="2">Phone
+                        </label>
+                    </div>
 
-                        <input type="text" class="field" placeholder="Your Name" required>
+                    <input type="text" class="field" placeholder="Your Email" required>
+                    <input type="text" class="field" placeholder="Phone Number (Optional)">
 
-                        <div class="preferred-contact">
-                            <h3>Preferred contact methods</h3>
-                            <label class="radio-inline">
-                                <input type="radio" name="preferred-contact" value="1">Email
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="preferred-contact" value="2">Phone
-                            </label>
-                        </div>
-
-                        <input type="text" class="field" placeholder="Your Email" required>
-                        <input type="text" class="field" placeholder="Phone Number (Optional)">
-
-                        <textarea placeholder="Send Message" class="field" required></textarea>
-                        <div class="inputBx">
-                            <input type="reset" value="Reset">
-                            <input type="submit" value="Submit">
-                        </div>
+                    <textarea placeholder="Send Message" class="field" required></textarea>
+                    <div class="inputBx">
+                        <input type="reset" value="Reset">
+                        <input type="submit" value="Submit">
                     </div>
                 </div>
             </div>
-        </form>
-        <!--Form END-->
-    </section>
-
-</body>
-
-</html>
+        </div>
+    </form>
+    <!--Form END-->
+</section>
