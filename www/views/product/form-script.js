@@ -11,50 +11,55 @@ const productAddButton = document.querySelector("#product-add-button");
 
 
 
-function validateProductName(){
+function validateProductName(showMessage){
     let name = productName.value;
-    if (name == ''){
-        nameAlert.innerHTML = `<span style="color:red">Please give your product a name</span>`;
-        return false
+    if (name === ''){
+        if (showMessage)
+            nameAlert.innerHTML = `<span style="color:red">Please give your product a name</span>`;
+        return false;
     }
     else if (name.length < 10){
-        nameAlert.innerHTML = `<span style="color:red">Product name a has length from 10 to 20</span>`;
-        return false
+        if (showMessage)
+            nameAlert.innerHTML = `<span style="color:red">Product name a has length from 10 to 20</span>`;
+        return false;
     }
     else if (name.length > 20){
-        nameAlert.innerHTML = `<span style="color:red">Product name a has length from 10 to 20</span>`;
-        productName.value = productName.value.substr(0, 20);
-        return false
+        if (showMessage)
+            nameAlert.innerHTML = `<span style="color:red">Product name a has length from 10 to 20</span>`;
+        productName.value = productName.value.substring(0, 20);
+        return false;
     }
     else{
         nameAlert.innerHTML = `<span></span>`;
-        return true
+        return true;
     }
 }
 
 
-function validatePrice(){
+function validatePrice(showMessage){
     let price = productPrice.value;
     if (price>0){
         priceAlert.innerHTML = `<span></span>`;
-        return true
+        return true;
     }
     else{
-        priceAlert.innerHTML = `<span style="color:red">Price must be a positive number</span>`;
-        return false
+        if (showMessage)
+            priceAlert.innerHTML = `<span style="color:red">Price must be a positive number</span>`;
+        return false;
     }
 }
 
 
-function validateDescription(){
+function validateDescription(showMessage){
     let text = productDescription.value
     if (text.length <= 500){
         descriptionAlert.innerHTML = `<span></span>`;
         return true;
     }
     else{
-        descriptionAlert.innerHTML = `<span style="color:red">Description can not be longer than 500 characters</span>`;
-        productDescription.value = productDescription.value.substr(0, 500);
+        if (showMessage)
+            descriptionAlert.innerHTML = `<span style="color:red">Description can not be longer than 500 characters</span>`;
+        productDescription.value = productDescription.value.substring(0, 500);
         return false;
     }
 }  
@@ -62,9 +67,9 @@ function validateDescription(){
 
 
 function verify(){
-    if (validateProductName() && validatePrice() && validateDescription()){
+    if (validateProductName(false) && validatePrice(false) && validateDescription(false)){
         productAddButton.disabled = false;
-        clearInterval(myInterval);
+        //clearInterval(myInterval);
     }
     else{
         productAddButton.disabled = true;
