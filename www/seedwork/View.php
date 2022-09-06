@@ -28,6 +28,8 @@ class View
      */
     public function render(): string
     {
+        if(str_contains($this->view, '.html'))
+            return $this->tryResolveView();
         return $this->tryResolveLayout($this->tryResolveView());
     }
 
@@ -58,6 +60,7 @@ class View
         $viewDir = dirname($viewPath);
         $dirParts = explode(DIRECTORY_SEPARATOR, $viewDir);
         $cwdName = $dirParts[count($dirParts) - 1];
+        $cwdName = $cwdName == "views" ? "" : $cwdName;
         
         $viewParts = explode("/", $this->view);
         $viewName = $viewParts[count($viewParts) - 1];
@@ -72,8 +75,9 @@ class View
         $this->layoutData["_content"] = $viewContent;
         $this->layoutData["_avatar"] = "default-img.png";
 
+        $name = explode('.', $viewName)[0];
         foreach (scandir($viewDir) as $staticFileName) {
-            if(!str_contains($staticFileName, $viewName))
+            if(!str_contains($staticFileName, $name))
                 continue;
             if (str_contains($staticFileName, ".js")) {
                 $this->layoutData["_scripts"][] = STATIC_FILE_PATH . $cwdName . DIRECTORY_SEPARATOR . $staticFileName;

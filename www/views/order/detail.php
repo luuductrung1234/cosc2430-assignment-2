@@ -80,9 +80,8 @@ switch ($order["status"]) {
                     <?php foreach ($order["items"] as $item): ?>
                         <div class="d-flex justify-content-between align-items-center mt-3 p-2 item rounded">
                             <div class="d-flex flex-row">
-                                <img class="rounded"
-                                     src="<?= "../../images/" . $item["pictures"][0] ?>"
-                                     width="40">
+                                <img class="rounded item-img"
+                                     src="<?= "../../images/" . $item["pictures"][0] ?>" alt="product image">
                                 <div class="ms-2">
                                     <a class="item-link"
                                        href="/product-detail?id=<?= $item["productId"] ?>">

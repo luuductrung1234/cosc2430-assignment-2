@@ -16,7 +16,7 @@ endforeach;
             <div class="product-details me-2 w-100">
                 <div class="d-flex justify-content-between">
                     <div class="flex-row align-items-center">
-                        <a href="/"><img width="15px" src="../../images/back-icon.png" alt="backward icon"/><span class="ms-2">Continue Shopping</span></a>
+                        <a href="/"><img class="icon-img" src="../../images/back-icon.png" alt="backward icon"/><span class="ms-2">Continue Shopping</span></a>
                     </div>
                     <div class="flex-row align-items-center">
                         <span><?= date('M j, Y') ?></span>
@@ -35,9 +35,8 @@ endforeach;
                 <div class="items">
                     <?php foreach ($my_cart as $item): ?>
                         <div class="d-flex justify-content-between align-items-center mt-3 p-2 item rounded">
-                            <div class="d-flex flex-row"><img class="rounded"
-                                                              src="<?= "../../images/" . $my_product[$item["id"] - 1]["pictures"][0] ?>"
-                                                              width="40">
+                            <div class="d-flex flex-row">
+                                <img class="rounded item-img" src="<?= "../../images/" . $my_product[$item["id"] - 1]["pictures"][0] ?>" alt="product image">
                                 <div class="ms-2">
                                     <a class="item-link"
                                        href="/product-detail?id=<?= $my_product[$item["id"] - 1]["id"] ?>">
@@ -51,7 +50,7 @@ endforeach;
                                 <span class="d-block ms-5"><?= $item["quantity"] ?></span>
                                 <button type="button" class="trash-button ms-2" id="<?= (int)$item["id"] ?>"
                                         onclick="removeItemFromCart(this.id)"><img
-                                            class="ms-3" width="15px" src="../../images/trash-can.png" alt="trash can icon"/></button>
+                                            class="icon-img ms-3" src="../../images/trash-can.png" alt="trash can icon"/></button>
                             </div>
                         </div>
                     <?php endforeach; ?>

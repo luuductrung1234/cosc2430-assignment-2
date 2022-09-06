@@ -16,7 +16,7 @@ class CustomerController
     {
         $searchName = $_GET["searchName"] ?? null;
         $fromPrice = isset($_GET["fromPrice"]) && !empty($_GET["fromPrice"]) ? (float)$_GET["fromPrice"] : null;
-        $toPrice = isset($_GET["toPrice"]) && !empty($_GET["fromPrice"]) ? (float)$_GET["toPrice"] : null;
+        $toPrice = isset($_GET["toPrice"]) && !empty($_GET["toPrice"]) ? (float)$_GET["toPrice"] : null;
 
         $account = AuthenticationService::getAccount();
         $profile = DataAccessService::getProfile($account["profileId"], $account["role"]);
