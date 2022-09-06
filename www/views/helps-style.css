@@ -86,13 +86,13 @@ a:link {
     border: none;
     cursor: pointer;
     transition: all 2s;
+    color: #333;
 }
 
 
 .card-inner:hover {
-
     transform: scale(1.1);
-
+    color: #333;
 }
 
 .card-inner-img {

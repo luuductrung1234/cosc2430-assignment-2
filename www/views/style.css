@@ -39,8 +39,24 @@ a, button {
 
 /* HEADER */
 
+.navbar-logo {
+    width: 30px;
+}
+
 .navbar-side {
     margin-left: 20px;
+}
+
+.nav-link {
+  color: #707071;
+}
+
+.nav-link .active {
+    color: #313131;
+}
+
+.nav-link:hover {
+    color: #707071;
 }
 
 .search-icon {
