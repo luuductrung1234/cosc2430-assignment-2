@@ -55,7 +55,7 @@
                                      aria-labelledby="nav-all-items">
                                     <div class="row pe-4 ps-4 text-dark">
                                         <?php foreach ($products as $product): ?>
-                                            <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
+                                            <div class="col-md-6 col-lg-4 mt-3">
                                                 <div class="card">
                                                     <img src="<?= "../../images/" . $product["pictures"][0] ?>"
                                                          class="card-img-top" alt="product image">
