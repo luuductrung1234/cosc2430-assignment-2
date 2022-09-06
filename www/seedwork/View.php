@@ -28,6 +28,8 @@ class View
      */
     public function render(): string
     {
+        if(str_contains($this->view, '.html'))
+            return $this->tryResolveView();
         return $this->tryResolveLayout($this->tryResolveView());
     }
 
