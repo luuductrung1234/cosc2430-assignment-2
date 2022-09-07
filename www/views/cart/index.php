@@ -55,6 +55,28 @@ endforeach;
                         </div>
                     <?php endforeach; ?>
                 </div>
+                <div class="col-12 mt-3 summary">
+                    <div><h6 class="mt-3 mb-1 fw-bold">Payment</h6></div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="payment" id="bankPayment" onclick="bankPaymentSelected()">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Bank transfer
+                        </label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="payment" id="codPayment" onclick="codPaymentSelected()" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Cash on Delivery (COD)
+                        </label>
+                    </div>
+                    <div class="collapse" id="bankInformation">
+                        <div class="card card-body">
+                            <p><strong>Bank Name: </strong>Vietcombank</p>
+                            <p><strong>Account Holder Name: </strong>Lazada Company</p>
+                            <p><strong>Account Number: </strong>123456789</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="d-flex flex-row-reverse mt-3">
                     <div class="price ms-2">
                         <span class="bold">Total amount:</span>

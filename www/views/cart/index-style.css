@@ -78,3 +78,7 @@ background: none;
 .icon-img {
   width: 15px;
 }
+
+.form-check {
+  padding: 3px 40px;
+}
