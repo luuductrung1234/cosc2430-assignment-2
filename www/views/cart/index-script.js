@@ -28,3 +28,14 @@ function removeItemFromCart(id) {
 function clearCart() {
     localStorage.setItem("cart", "[]")
 }
+
+function bankPaymentSelected() {
+    let bankInformation = document.getElementById("bankInformation")
+    bankInformation.classList = "";
+}
+
+function codPaymentSelected() {
+    let bankInformation = document.getElementById("bankInformation")
+    if (bankInformation.classList.length === 0)
+        bankInformation.classList.add("collapse");
+}
