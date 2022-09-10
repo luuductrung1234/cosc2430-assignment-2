@@ -31,8 +31,8 @@ How to run
 
 1. download the submitted .zip file
 2. extract the .zip file
-3. open the terminal and navigate to the directory after you unzipped
-4. run following PHP command to start the build-in webserver
+3. open the terminal and navigate to the generated directory after you unzipped
+4. run following PHP command to start the build-in webserver (with document root is www/)
 
 $> php -S localhost:8080 -t www
 
@@ -55,6 +55,32 @@ password: 12345
 ---------------------------------------------
 Citation
 ---------------------------------------------
+Add Icon (add-icon.png, add-outline-icon.png). Retrieved August 29, 2022, from https://icons8.com/icons/set/add
+
+Address Icon (address.png). Retrieved August 29, 2022, from https://icons8.com/icons/set/address
+
+Back Icon (back-icon.png). Retrieved August 29, 2022, from https://icons8.com/icons/set/back
+
+Cancel Icon (cancel-icon.png). Retrieved August 29, 2022, from https://icons8.com/icons/set/cancel
+
+Shopping Cart Icon (cart-icon.png, cart-sm-black-icon.png, cart-sm-icon.png). Retrieved August 29, 2022, from https://icons8.com/icons/set/cart
+
+Delivery Icon (delivery-icon.png). Retrieved August 29, 2022, from https://icons8.com/icons/set/delivery
+
+Detail Icon (detail-icon.png). Retrieved August 29, 2022, from https://icons8.com/icons/set/detail
+
+Edit Icon (edit-icon.png). Retrieved August 29, 2022, from https://icons8.com/icons/set/edit
+
+Logout Icon (logout-icon.png). Retrieved August 29, 2022, from https://icons8.com/icons/set/logout
+
+Phone Icon (phone-icon.png). Retrieved August 29, 2022, from https://icons8.com/icons/set/phone
+
+Reset Icon (reset-icon.png). Retrieved August 29, 2022, from https://icons8.com/icons/set/reset
+
+Save Icon (save-icon.png). Retrieved August 29, 2022, from https://icons8.com/icons/set/save
+
+Search Icon (search-icon.png, search-white.png). Retrieved August 29, 2022, from https://icons8.com/icons/set/search
+
 Face generator – generate faces online using AI. Generated Photos. (n.d.). Retrieved September 6, 2022, from https://generated.photos/face-generator
 
 Square letter CJ Graphic Logo Template, logo for company Stock Vector Image & Art. Alamy. (n.d.). Retrieved September 6, 2022, from https://www.alamy.com/square-letter-cj-graphic-logo-template-logo-for-company-image241372344.html?imageid=A1814371-055B-4A16-AC5D-4687AB30C907&p=654415&pn=1&searchId=0789e5201f8d744380389b1dc1cbf5e8&searchtype=0

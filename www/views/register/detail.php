@@ -2,7 +2,9 @@
 /**
  * @var bool $registerFailed
  * @var bool $invalid
+ * @var ?string $errorMessage
  * @var ?string $selectedRole
+ * @var ?array $old
  */
 
 $_SESSION["selectedRole"] = $selectedRole;
@@ -16,20 +18,15 @@ $_SESSION["selectedRole"] = $selectedRole;
         <h3 class="register_vendor_heading">
             <span>S</span>ign up
         </h3>
-        <?php if (isset($_SESSION["username_existed"]) && $_SESSION["username_existed"]): ?>
-            <p class="color_red" id="register_vendor_heading">Username already existed</p>
-            <?php unset($_SESSION["username_existed"]); ?>
-        <?php endif; ?>
-        <?php if (isset($_SESSION["business_existed"]) && $_SESSION["business_existed"]): ?>
-            <p class="color_red" id="register_vendor_heading">Business Name/Address already existed</p>
-            <?php unset($_SESSION["business_existed"]); ?>
-        <?php endif; ?>
+        <?php if($invalid): ?>
+            <p class='alert alert-danger'><?= $errorMessage ?><p/>
+        <?php endif ?>
         <div class="register_form">
             <form action="/register" method="POST" enctype="multipart/form-data">
                 <div class="register">
                     <div class="register_label">Username<span class="color_red">*</span></div>
                     <div class="register_input">
-                        <input type="text" name="username" id="username" onkeyup="verifyName()" required>
+                        <input type="text" name="username" id="username" onkeyup="verifyName()" required value="<?= $old["username"] ?? "" ?>">
                     </div>
                     <div class="register_alert" id="username_alert"></div>
                 </div>
@@ -52,7 +49,7 @@ $_SESSION["selectedRole"] = $selectedRole;
                         <div class="register_label">First Name<span class="color_red">*</span>
                         </div>
                         <div class="register_input">
-                            <input type="text" name="firstname" id="firstname" onkeyup="verifyFirstName()" required>
+                            <input type="text" name="firstname" id="firstname" onkeyup="verifyFirstName()" value="<?= $old["firstname"] ?? "" ?>" required>
                         </div>
                         <div class="register_alert" id="firstname_alert"></div>
                     </div>
@@ -60,7 +57,7 @@ $_SESSION["selectedRole"] = $selectedRole;
                         <div class="register_label">Last Name<span class="color_red">*</span>
                         </div>
                         <div class="register_input">
-                            <input type="text" name="lastname" id="lastname" onkeyup="verifyLastName()" required>
+                            <input type="text" name="lastname" id="lastname" onkeyup="verifyLastName()" value="<?= $old["lastname"] ?? "" ?>" required>
                         </div>
                         <div class="register_alert" id="lastname_alert"></div>
                     </div>
@@ -68,7 +65,7 @@ $_SESSION["selectedRole"] = $selectedRole;
                         <div class="register_label">Address<span class="color_red">*</span>
                         </div>
                         <div class="register_input">
-                            <input type="text" name="address" id="address" onkeyup="verifyAddress()" required>
+                            <input type="text" name="address" id="address" onkeyup="verifyAddress()" value="<?= $old["address"] ?? "" ?>" required>
                         </div>
                         <div class="register_alert" id="address_alert"></div>
                     </div>
@@ -76,14 +73,14 @@ $_SESSION["selectedRole"] = $selectedRole;
                     <div class="register">
                         <div class="register_label">Business Name<span class="color_red">*</span></div>
                         <div class="register_input">
-                            <input type="text" name="businessName" id="business_name" onkeyup="verifyBusinessName()" required>
+                            <input type="text" name="businessName" id="business_name" onkeyup="verifyBusinessName()" value="<?= $old["businessName"] ?? "" ?>" required>
                         </div>
                         <div class="register_alert" id="business_name_alert"></div>
                     </div>
                     <div class="register">
                         <div class="register_label">Business Address<span class="color_red">*</span></div>
                         <div class="register_input">
-                            <input type="text" name="businessAddress" id="business_address" onkeyup="verifyBusinessAddress()" required>
+                            <input type="text" name="businessAddress" id="business_address" onkeyup="verifyBusinessAddress()" value="<?= $old["businessAddress"] ?? "" ?>" required>
                         </div>
                         <div class="register_alert" id="business_address_alert"></div>
                     </div>
@@ -105,21 +102,21 @@ $_SESSION["selectedRole"] = $selectedRole;
                 <div class="register">
                     <div class="register_label">Email<span class="color_red">*</span></div>
                     <div class="register_input">
-                        <input type="email" name="email" id="email" onkeyup="verifyEmail()" required>
+                        <input type="email" name="email" id="email" onkeyup="verifyEmail()" value="<?= $old["email"] ?? "" ?>" required>
                     </div>
                     <div class="register_alert" id="email_alert"></div>
                 </div>
                 <div class="register">
                     <div class="register_label">Phone<span class="color_red">*</span></div>
                     <div class="register_input">
-                        <input type="number" name="phone" id="phone" onkeyup="verifyPhone()" required>
+                        <input type="number" name="phone" id="phone" onkeyup="verifyPhone()" value="<?= $old["phone"] ?? "" ?>" required>
                     </div>
                     <div class="register_alert" id="phone_alert"></div>
                 </div>
                 <div class="register">
                     <div class="register_label">Picture</div>
                     <div class="register_input">
-                        <input type="file" name="picture" id="profile" multiple accept="image/*">
+                        <input type="file" name="picture" id="profile" multiple accept="image/*" required>
                     </div>
                     <div class="register_alert"></div>
                 </div>
