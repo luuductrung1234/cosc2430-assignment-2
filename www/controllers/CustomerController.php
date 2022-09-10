@@ -37,7 +37,7 @@ class CustomerController
     {
         $account = AuthenticationService::getAccount();
         $profile = DataAccessService::getProfile($account["profileId"], $account["role"]);
-        $orders = DataAccessService::getOrders();
+        $orders = DataAccessService::getOrders(customerId: $account["profileId"]);
         $viewData = [
             "_title" => "Orders",
             "_avatar" => $profile["picture"],

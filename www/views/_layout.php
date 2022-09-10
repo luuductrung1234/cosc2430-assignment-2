@@ -64,7 +64,7 @@
                                 <span id="cart-quantity" class="notified-quantity">0</span>
                             </div>
                         <?php endif; ?>
-                        <a href="/logout" type="button" class="logout-btn">Logout</a>
+                        <a href="/logout" type="button" class="logout-btn" onclick="clearCart()">Logout</a>
                         <a class="avatar-btn" href="/profile">
                             <img class="avatar-img rounded-pill" src="<?= "../images/" . $_avatar ?>" alt="avatar">
                         </a>

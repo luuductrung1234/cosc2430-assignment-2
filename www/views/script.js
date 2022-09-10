@@ -70,3 +70,7 @@ function setCookie(name, value, days) {
     }
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
+
+function clearCart() {
+    localStorage.setItem("cart", "[]")
+}
