@@ -152,13 +152,15 @@ class DataAccessService
     // ORDER
     // =========================================================
 
-    public static function getOrders(?int $distributionId = null, ?string $status = null): ?array
+    public static function getOrders(?int $distributionId = null, ?string $status = null, ?int $customerId = null): ?array
     {
         $orders = self::loadOrders();
         if (!is_null($distributionId))
             $orders = array_values(array_filter($orders, fn($a) => $a["distributionId"] == $distributionId));
         if (!is_null($status))
             $orders = array_values(array_filter($orders, fn($a) => $a["status"] == $status));
+        if (!is_null($customerId))
+            $orders = array_values(array_filter($orders, fn($a) => $a["customerId"] == $customerId));
 
         $customers = self::loadProfiles(CUSTOMER_ROLE);
         foreach ($orders as &$order) {
