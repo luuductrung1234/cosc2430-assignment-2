@@ -201,7 +201,7 @@ class RegisterController
             "email" => $_POST["email"],
             "address" => $_POST["address"],
             "phone" => $_POST["phone"],
-            "distributionId" => $_POST["distribution"],
+            "distributionId" => (int) $_POST["distribution"],
             "picture" => $_FILES["picture"],
         );
 
