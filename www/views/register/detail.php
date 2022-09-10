@@ -116,7 +116,7 @@ $_SESSION["selectedRole"] = $selectedRole;
                 <div class="register">
                     <div class="register_label">Picture</div>
                     <div class="register_input">
-                        <input type="file" name="picture" id="profile" multiple accept="image/*">
+                        <input type="file" name="picture" id="profile" multiple accept="image/*" required>
                     </div>
                     <div class="register_alert"></div>
                 </div>

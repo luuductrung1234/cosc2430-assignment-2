@@ -146,7 +146,6 @@ class RegisterController
             if (!isset($_FILES["picture"]) || empty($_FILES["picture"]["name"])) {
                 $new_vendor["picture"] = "";
             } else {
-                $curr_id = $new_account['profileId'];
                 $extension = explode('.', $_FILES["picture"]["name"])[1];
                 $fileName = "vendor" . "-" . "$curr_id" . "." . $extension;
                 move_uploaded_file($_FILES["picture"]["tmp_name"], IMAGE_PATH . $fileName);
@@ -174,7 +173,7 @@ class RegisterController
             return $this->detail($_SESSION["selectedRole"], "Username already existed!");
         } else {
             $_SESSION["business_existed"] = true;
-            return $this->detail($_SESSION["selectedRole"], "Business name already existed!");
+            return $this->detail($_SESSION["selectedRole"], "BusinessName or BusinessAddress already existed!");
         }
         return "";
     }
